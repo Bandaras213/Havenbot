@@ -1,0 +1,5 @@
+{
+    "token": "DISCORD_TOKEN",
+    "ownerID": "DISCORD_ID",
+    "prefix": "."
+}
