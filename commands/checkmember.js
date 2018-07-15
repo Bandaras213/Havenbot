@@ -7,9 +7,11 @@ module.exports = (bot, message, args, Discord, moment) => {
             let member = message.mentions.members.first();
             if (!member) return message.reply(`Unable to find argument! **[Mention]**`);
 
-            let guild = member.guild;
             let embed = {
-                "color": `${message.guild.roles.find("name", "Commander").color}`,
+                "color": `${message.member.guild.roles.find("name", "Commander").color}`,
+                "footer": {
+                    "text": `Last message sent by ${member.displayName} was on ${moment(member.user.lastMessage.createdAt).format('dddd, DD/MM/YYYY')} in #${member.user.lastMessage.channel.name}`
+                },
                 "thumbnail": {
                     "url": `${member.user.avatarURL}`
                 },
@@ -24,13 +26,13 @@ module.exports = (bot, message, args, Discord, moment) => {
                         "inline": true
                     },
                     {
-                        "name": "User ID:",
-                        "value": `${member.user.id}`,
+                        "name": "Avatar URL:",
+                        "value": `[Click Me](${member.user.displayAvatarURL})`,
                         "inline": true
                     },
                     {
-                        "name": "Avatar URL:",
-                        "value": `[Click Me](${member.user.displayAvatarURL})`,
+                        "name": "User ID:",
+                        "value": `${member.user.id}`,
                         "inline": true
                     },
                     {
@@ -44,7 +46,7 @@ module.exports = (bot, message, args, Discord, moment) => {
                         "inline": true
                     },
                     {
-                        "name": `Joined ${guild} on:`,
+                        "name": `Joined ${member.guild} on:`,
                         "value": `${moment(member.joinedAt).format('dddd, DD/MM/YYYY')}`,
                         "inline": true
                     }

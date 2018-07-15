@@ -1,44 +1,42 @@
 module.exports = (bot, message, args, Discord, moment) => {
-    let member = message.member;
-    let guild = member.guild;
     let embed = {
-        "color": `${message.guild.roles.find("name", "Commander").color}`,
+        "color": `${message.member.guild.roles.find("name", "Commander").color}`,
         "thumbnail": {
-            "url": `${member.user.avatarURL}`
+            "url": `${message.member.user.avatarURL}`
         },
         "author": {
-            "name": `Overview of User ${member.displayName}:`,
-            "icon_url": `${member.user.avatarURL}`,
+            "name": `Overview of User ${message.member.displayName}:`,
+            "icon_url": `${message.member.user.avatarURL}`,
         },
         "fields": [
             {
                 "name": "User Tag:",
-                "value": `${member.user.tag}`,
-                "inline": true
-            },
-            {
-                "name": "User ID:",
-                "value": `${member.user.id}`,
-                "inline": true
-            },
-            {
-                "name": "Highest Role:",
-                "value": `${member.highestRole.name}`,
+                "value": `${message.member.user.tag}`,
                 "inline": true
             },
             {
                 "name": "Avatar URL:",
-                "value": `[Click Me](${member.user.displayAvatarURL})`,
+                "value": `[Click Me](${message.member.user.displayAvatarURL})`,
+                "inline": true
+            },
+            {
+                "name": "User ID:",
+                "value": `${message.member.user.id}`,
+                "inline": true
+            },
+            {
+                "name": "Highest Role:",
+                "value": `${message.member.highestRole.name}`,
                 "inline": true
             },
             {
                 "name": "Account Created on:",
-                "value": `${moment(member.user.createdAt).format('dddd, DD/MM/YYYY')}`,
+                "value": `${moment(message.member.user.createdAt).format('dddd, DD/MM/YYYY')}`,
                 "inline": true
             },
             {
-                "name": `Joined ${guild} on:`,
-                "value": `${moment(member.joinedAt).format('dddd, DD/MM/YYYY')}`,
+                "name": `Joined ${message.member.guild} on:`,
+                "value": `${moment(message.member.joinedAt).format('dddd, DD/MM/YYYY')}`,
                 "inline": true
             }
         ]
