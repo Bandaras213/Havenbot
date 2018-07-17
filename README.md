@@ -60,7 +60,7 @@
 		- **checkself**
 			+ Checks the user and sends an embed with some of their Discord information.
 		- **poll**
-        	+ Creates a poll with a question given by the user using ?? / ?? / ?? reactions. (no evaluation)
+        	+ Creates a poll with a question given by the user using 👍 / 🤷 / 👎 reactions. (no evaluation)
 		- **rate**
         	+ Rates something / someone (if specified, if not rates the user that triggered the command) a number out of 10.
 		- **8ball**
