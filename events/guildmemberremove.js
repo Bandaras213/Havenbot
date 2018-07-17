@@ -1,8 +1,16 @@
 module.exports = (bot, member, moment) => {
+
+    let footertext
+    if (member.user.lastMessage == null) {
+        footertext = `No message sent by ${member.displayName} since the last restart.`;
+    } else {
+        footertext = `Last message sent by ${member.displayName} was on ${moment(member.user.lastMessage.createdTimestamp).format('dddd, DD/MM/YYYY')} in #${member.user.lastMessage.channel.name}.`;
+    };
+    
     let embed = {
         "color": 16711680,
         "footer": {
-            "text": `Last message sent by ${member.displayName} was on ${moment(member.lastMessage.createdAt).format('dddd, DD/MM/YYYY')} in #${member.user.lastMessage.channel.name}`,
+            "text": `${footertext}`,
         },
         "thumbnail": {
             "url": `https://puu.sh/AWOvD.png`,

@@ -1,7 +1,5 @@
 module.exports = async (bot, member, moment) => {
     var VisRole = member.guild.roles.find("name", "Visitor");
-    await member.addRole(VisRole);
-    await member.guild.channels.find("name", "main").send(`Welcome ${member.user} to the ${member.guild} Discord! **Please make sure to read <#418201549597048844> to get access to all Channels!** <:Haven:430425064589230082>`);
     let embed = {
         "color": 65280,
         "thumbnail": {
@@ -39,6 +37,8 @@ module.exports = async (bot, member, moment) => {
             },
         ]
     };
+    await member.addRole(VisRole);
+    await member.guild.channels.find("name", "main").send(`Welcome ${member.user} to the ${member.guild} Discord! **Please make sure to read <#418201549597048844> to get access to all Channels!** <:Haven:430425064589230082>`);
     await member.guild.channels.find("name", "memberlog").send({ embed });
 
     bot.log(`${member.user.username} joined the ${member.guild} Server`);

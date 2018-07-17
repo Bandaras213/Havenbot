@@ -18,7 +18,7 @@ module.exports = (bot, message, args, Discord, moment) => {
             let embed = new Discord.RichEmbed({
                 "title": `${membersWithRole.length} Users with the ${roleName} role:`,
                 "description": membersWithRole.join("\n"),
-                "color": `${message.guild.roles.find("name", "Commander").color}`,
+                "color": `${message.guild.roles.find("name", roleName).color}`,
             });
             message.delete();
             message.channel.send({ embed });

@@ -1,7 +1,7 @@
-//created with tutorials from 〈evie.codes〉& Aeirety;
-//using https://discord.js.org & https://momentjs.com;
+//Requiring Discord.js & Moment.js
 const Discord = require("discord.js");
 const moment = require('moment');
+//Setting moment locale to English
 moment.locale('en');
 
 var bot = new Discord.Client();
@@ -16,6 +16,8 @@ bot.on('guildMemberAdd', member => require('./events/guildmemberadd.js')(bot, me
 bot.on('guildMemberRemove', member => require('./events/guildmemberremove.js')(bot, member, moment));
 //Message Event Handler
 bot.on('message', message => require('./events/message.js')(bot, message, Discord, moment));
+//Hopefully Error Logging
+bot.on("error", error => require('./events/error.js')(bot, error));
 
 //Commands
 bot.commands = new Discord.Collection();
@@ -36,4 +38,5 @@ bot.commands.set('say', require('./commands/say.js'));
 bot.commands.set('test', require('./commands/test.js'));
 //bot.commands.set('name', require('./commands/name.js'));
 
+//Login with the Token
 bot.login(bot.config.token);

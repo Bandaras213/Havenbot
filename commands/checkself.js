@@ -1,6 +1,6 @@
 module.exports = (bot, message, args, Discord, moment) => {
     let embed = {
-        "color": `${message.member.guild.roles.find("name", "Commander").color}`,
+        "color": `${message.member.highestRole.color}`,
         "thumbnail": {
             "url": `${message.member.user.avatarURL}`
         },
