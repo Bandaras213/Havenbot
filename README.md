@@ -4,8 +4,7 @@
 
 # Haven Bot by xTobiShotz
 **Firstly I would like to mention that this my first programming project!**
-**Lots of things are hard coded, some of the code is messy and theres a big chance the bot will just crash when an error occurs.**
-**But I'm sure that as I learn these things all of it will improve!**
+**Lots of things are hard coded, some of the code is messy but I'm sure that as I learn these things all of it will improve!**
 
 ## Config.json file
 | Setting | Default | Description |
@@ -13,6 +12,7 @@
 | token | "DISCORD_TOKEN | Discord Bot Token. |
 | ownerID | "OWNER_ID" | Discord ID of the owner. |
 | prefix | "." | Prefix used for commands. |
+| ffxivapikey | "API_KEY" | xivapi.com API Key. |
 
 ## Index.js
 **This is the file where everything gets called etc.**
@@ -21,7 +21,7 @@
 
 * ## Functions
   - **Log**
-	+ Neatly formats messages for console logging.
+	+ Formats messages for console logging. Errors still look a bit wonky but it works.
 
 - ## Events
 	+ **Ready**
@@ -31,9 +31,9 @@
 	+ **GuildmemberAdd**
 		* Welcomes the user that joined in the #main channel, assigns the "Visitor" role and sends an embed with some of their Discord information to #memberlog.
 	+ **GuildmemberRemove**
-		* Just sends an embed with some of Discord information of the user that left #memberlog.
+		* Sends an embed with some Discord information of the user that left to #memberlog.
 	+ **Error**
-		* This should hopefully log erros such as disconnects and let it auto reconnect. (?)
+		* This logs erros such as disconnects and lets it auto reconnect.
  + ## Commands 
  
  	* ### Admin Roles Only
@@ -45,10 +45,12 @@
 			+ Checks the mentioned user and sends an embed with some of their Discord information.
 		- **checkrole**
 			+ Checks a role and sends an embed with all users in the specified role.
+		- **mute**
+			+ Assigns a "Mute" role (and if in a voicechannel, server mutes them) which will make them unable to write/talk for a defined period of time.
 			
 	* ### Verification
 		- **iam**
-			+ Fetches XIVSync data of the given Charactername to see if it exits. If it does, switches the "Visitor" role with the base member role "Recruit" and sends an embed with their Lodestone information and Discord tag. (Server is hard coded to Ragnarok)
+			+ Fetches XIVAPI data of the given Charactername to see if it exits. If it does, removes the "Visitor" role, assigns the base member role "Recruit" and sends an embed with their Lodestone information and Discord tag. (Server is always Ragnarok)
 
 	* ### Info
 		- help
@@ -60,9 +62,9 @@
 		- **checkself**
 			+ Checks the user and sends an embed with some of their Discord information.
 		- **poll**
-        	+ Creates a poll with a question given by the user using ?? / ?? / ?? reactions. (no evaluation)
+        	+ Creates a poll with a question given by the user using 👍 / 👎 reactions. (no evaluation)
 		- **rate**
-        	+ Rates something / someone (if specified, if not rates the user that triggered the command) a number out of 10.
+        	+ Rates something / someone (if nothing is specified rates the user that triggered the command) a number out of 10.
 		- **8ball**
 			+  Magic 8-Ball for fortune-telling or advice seeking with sassy answers.
 		- **d6 / d20**
@@ -79,9 +81,10 @@
   - Discord.js: [Website](https://discord.js.org/#/), [Github](https://github.com/discordjs/discord.js)
   - Moment.js: [Website](http://momentjs.com/), [Github](https://github.com/moment/moment/)
   - Sneckfetch.js: [Website](https://snekfetch.js.org/), [Github](https://github.com/devsnek/snekfetch)
+  - ms.js: [Website](https://npmjs.com/ms), [Github](https://github.com/zeit/ms)
 
 - **API's Used**
-	+ XIVSync: [Website](https://xivsync.com)
+	+ XIVAPI: [Website](https://xivapi.com)
 
 * **Programming**
   - xTobiShotz (A'rata Kokonoe)
@@ -91,5 +94,5 @@
     + Jessika James
   * Fun Commands (8ball, d6/20, rate, checkself)
 	- Emilia Rosenthal
-	- Ari Anna
-	- Momo Wistera
+	- Momoshi Bane
+	- Maati Lala

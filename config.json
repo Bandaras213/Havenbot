@@ -1,5 +1,6 @@
 {
     "token": "DISCORD_TOKEN",
     "ownerID": "DISCORD_ID",
-    "prefix": "."
+    "prefix": ".",
+    "ffxivapikey": "API_KEY"
 }

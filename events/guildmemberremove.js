@@ -1,12 +1,17 @@
 module.exports = (bot, member, moment) => {
-
+    let embedicon
+    if (!member.user.avatarURL) {
+        embedicon = "https://puu.sh/AWOvD.png";
+    } else {
+        embedicon = member.user.avatarURL;
+    };
     let footertext
     if (member.user.lastMessage == null) {
         footertext = `No message sent by ${member.displayName} since the last restart.`;
     } else {
         footertext = `Last message sent by ${member.displayName} was on ${moment(member.user.lastMessage.createdTimestamp).format('dddd, DD/MM/YYYY')} in #${member.user.lastMessage.channel.name}.`;
     };
-    
+
     let embed = {
         "color": 16711680,
         "footer": {
@@ -17,7 +22,7 @@ module.exports = (bot, member, moment) => {
         },
         "author": {
             "name": `User ${member.displayName} left the ${member.guild} Server`,
-            "icon_url": `${member.user.avatarURL}`,
+            "icon_url": `${embedicon}`,
         },
         "fields": [
             {
@@ -47,7 +52,7 @@ module.exports = (bot, member, moment) => {
             },
         ]
     };
-    member.guild.channels.find("name", "memberlog").send({ embed });
+    member.guild.channels.find(c => c.name === "memberlog").send({ embed });
 
-    bot.log(`${member.user.username} left the ${member.guild} Server`);
+    bot.log(`${member.displayName} (${member.user.tag}) left the ${member.guild} Server`, "Leave");
 };

@@ -1,5 +1,6 @@
+const ms = require("ms");
 module.exports = (bot) => {
-    bot.log(`Bot ${bot.user.tag} has started with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} servers.`);
+    bot.log(`Bot ${bot.user.tag} has started with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} servers.`, "Started");
     bot.user.setActivity('FINAL FANTASY XIV - A Realm Reborn');
 
     setInterval(function () {
@@ -17,5 +18,5 @@ module.exports = (bot) => {
         ];
         let randGame = Math.floor((Math.random() * games.length));
         bot.user.setActivity(`${games[randGame]}`);
-    }, 300 * 1000); // Seconds (300 = 5 Minutes, 600 = 10 Minutes) * 1000 milsec 
+    }, ms("5m"));
 };
