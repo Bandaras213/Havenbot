@@ -5,24 +5,18 @@ module.exports = (bot, member, moment) => {
     } else {
         embedicon = member.user.avatarURL;
     };
-    let footertext
-    if (member.user.lastMessage == null) {
-        footertext = `No message sent by ${member.displayName} since the last restart.`;
-    } else {
-        footertext = `Last message sent by ${member.displayName} was on ${moment(member.user.lastMessage.createdTimestamp).format('dddd, DD/MM/YYYY')} in #${member.user.lastMessage.channel.name}.`;
-    };
 
     let embed = {
         "color": 16711680,
-        "footer": {
-            "text": `${footertext}`,
-        },
         "thumbnail": {
             "url": `https://puu.sh/AWOvD.png`,
         },
         "author": {
-            "name": `User ${member.displayName} left the ${member.guild} Server`,
+            "name": `${member.displayName} left the ${member.guild} Server`,
             "icon_url": `${embedicon}`,
+        },
+        "footer": {
+            "text": `${member.displayName} had been on ${member.guild} since: ${moment(member.joinedAt).format('DD/MM/YYYY')}`,
         },
         "fields": [
             {
@@ -43,11 +37,6 @@ module.exports = (bot, member, moment) => {
             {
                 "name": "Discord ID:",
                 "value": `${member.id}`,
-                "inline": true,
-            },
-            {
-                "name": `Joined ${member.guild} on:`,
-                "value": `${moment(member.joinedAt).format('dddd, DD/MM/YYYY')}`,
                 "inline": true,
             },
         ]

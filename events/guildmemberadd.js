@@ -8,15 +8,17 @@ module.exports = async (bot, member, moment) => {
         embedicon = member.user.avatarURL;
     };
 
-
     let embed = {
         "color": 65280,
         "thumbnail": {
             "url": `https://puu.sh/AWOvv.png`,
         },
         "author": {
-            "name": `User ${member.displayName} Joined the ${member.guild} Server`,
+            "name": `${member.displayName} Joined the ${member.guild} Server`,
             "icon_url": `${embedicon}`,
+        },
+        "footer": {
+            "text": `Discord account ${member.user.tag} was created on: ${moment(member.user.createdAt).format('DD/MM/YYYY')}`,
         },
         "fields": [
             {
@@ -38,12 +40,7 @@ module.exports = async (bot, member, moment) => {
                 "name": "Discord ID:",
                 "value": `${member.id}`,
                 "inline": true,
-            },
-            {
-                "name": "Account Created on:",
-                "value": `${moment(member.user.createdAt).format('dddd, DD/MM/YYYY')}`,
-                "inline": true,
-            },
+            }
         ]
     };
     await member.addRole(VisRole);

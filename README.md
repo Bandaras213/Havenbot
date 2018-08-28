@@ -50,13 +50,15 @@
 			
 	* ### Verification
 		- **iam**
-			+ Fetches XIVAPI data of the given Charactername to see if it exits. If it does, removes the "Visitor" role, assigns the base member role "Recruit" and sends an embed with their Lodestone information and Discord tag. (Server is always Ragnarok)
+			+ Fetches XIVAPI data of a given Charactername to see if it exits and what Rank they are inside the Free Company. Changes their Nickname and assigns them their Rank Role, then sends an embed with their Lodestone information and Discord tag. (Server is always Ragnarok)
 
 	* ### Info
 		- help
 			+ Sends an embed with all available commands with short explanations. (still manually added)
 		- fcinfo
 			+ Sends an embed with Free Company information from the lodestone. (not fetching, hard coded)
+		- lookup
+			+ Sends an embed with Character information of a given Character from the XIVAPI .
 
 	* ### Fun
 		- **checkself**
@@ -72,8 +74,8 @@
 	* ### Debug
 		- **ping**
 			+ Gets Bot and API Latency.
-		- **test**
-		    + Usually its just "Hello, World!". But I sometimes use this command to test code.
+		- **updatedata**
+		    + This is just a command to update the Minion and Mount total until I make it update itself once a month or so.
 
 ## Credits
 
@@ -84,7 +86,7 @@
   - ms.js: [Website](https://npmjs.com/ms), [Github](https://github.com/zeit/ms)
 
 - **API's Used**
-	+ XIVAPI: [Website](https://xivapi.com)
+	+ XIVAPI: [Website](https://xivapi.com), [Github](https://github.com/xivapi)
 
 * **Programming**
   - xTobiShotz (A'rata Kokonoe)

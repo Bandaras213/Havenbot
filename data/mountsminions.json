@@ -1,0 +1,14 @@
+{
+    "Minions": [
+      {
+        "ID": 0,
+        "MinionTotal": 303
+      }
+    ],
+    "Mounts": [
+      {
+        "ID": 1,
+        "MountTotal": 169
+      }
+    ]
+  }

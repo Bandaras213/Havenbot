@@ -1,10 +1,8 @@
 module.exports = async (bot, message, args, Discord, moment) => {
-    let ComRole = message.guild.roles.find(r => r.name === "Commander");
-    let CapRole = message.guild.roles.find(r => r.name === "Captain");
 
     const deleteCount = parseInt(args[0], 10);
 
-    if (message.member.roles.has(ComRole.id) || message.member.roles.has(CapRole.id)) {
+    if (message.member.roles.some(r => ["Captain", "Commander",].includes(r.name))) {
 
         if (!deleteCount || deleteCount < 1 || deleteCount > 100)
             return message.reply("Invalid argument! **[Number has to be between 1 and 100]**"), message.react('❌');

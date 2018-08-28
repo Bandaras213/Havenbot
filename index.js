@@ -35,8 +35,9 @@ bot.commands.set('ping', require('./commands/ping.js'));
 bot.commands.set('poll', require('./commands/poll.js'));
 bot.commands.set('rate', require('./commands/rate.js'));
 bot.commands.set('say', require('./commands/say.js'));
-bot.commands.set('test', require('./commands/test.js'));
+bot.commands.set('lookup', require('./commands/lookup.js'));
 bot.commands.set('mute', require('./commands/mute.js'));
+bot.commands.set('updatedata', require('./commands/updatedata.js'));
 
 //Login with the Token
 bot.login(bot.config.token);
