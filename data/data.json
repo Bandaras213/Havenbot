@@ -1,0 +1,379 @@
+{
+    "GrandCompanys": [
+        {
+            "ID": 0,
+            "Name": "Maelstrom",
+            "Ranks": [
+                {
+                    "RankID": 0,
+                    "Name": "Storm Private Third Class"
+                },
+                {
+                    "RankID": 1,
+                    "Name": "Storm Private Second Class"
+                },
+                {
+                    "RankID": 2,
+                    "Name": "Storm Private First Class"
+                },
+                {
+                    "RankID": 3,
+                    "Name": "Storm Corporal"
+                },
+                {
+                    "RankID": 4,
+                    "Name": "Storm Sergeant Third Class"
+                },
+                {
+                    "RankID": 5,
+                    "Name": "Storm Sergeant Second Class"
+                },
+                {
+                    "RankID": 6,
+                    "Name": "Storm Sergeant First Class"
+                },
+                {
+                    "RankID": 7,
+                    "Name": "Chief Storm Sergeant"
+                },
+                {
+                    "RankID": 8,
+                    "Name": "Second Storm Lieutenant"
+                },
+                {
+                    "RankID": 9,
+                    "Name": "First Storm Lieutenant"
+                }
+            ]
+        },
+        {
+            "ID": 1,
+            "Name": "Order of the Twin Adder",
+            "Ranks": [
+                {
+                    "RankID": 0,
+                    "Name": "Serpent Private Third Class"
+                },
+                {
+                    "RankID": 1,
+                    "Name": "Serpent Private Second Class"
+                },
+                {
+                    "RankID": 2,
+                    "Name": "Serpent Private First Class"
+                },
+                {
+                    "RankID": 3,
+                    "Name": "Serpent Corporal"
+                },
+                {
+                    "RankID": 4,
+                    "Name": "Serpent Sergeant Third Class"
+                },
+                {
+                    "RankID": 5,
+                    "Name": "Serpent Sergeant Second Class"
+                },
+                {
+                    "RankID": 6,
+                    "Name": "Serpent Sergeant First Class"
+                },
+                {
+                    "RankID": 7,
+                    "Name": "Chief Serpent Sergeant"
+                },
+                {
+                    "RankID": 8,
+                    "Name": "Second Serpent Lieutenant"
+                },
+                {
+                    "RankID": 9,
+                    "Name": "First Serpent Lieutenant"
+                }
+            ]
+        },
+        {
+            "ID": 1,
+            "Name": "Immortal Flames",
+            "Ranks": [
+                {
+                    "RankID": 0,
+                    "Name": "Flame Private Third Class"
+                },
+                {
+                    "RankID": 1,
+                    "Name": "Flame Private Second Class"
+                },
+                {
+                    "RankID": 2,
+                    "Name": "Flame Private First Class"
+                },
+                {
+                    "RankID": 3,
+                    "Name": "Flame Corporal"
+                },
+                {
+                    "RankID": 4,
+                    "Name": "Flame Sergeant Third Class"
+                },
+                {
+                    "RankID": 5,
+                    "Name": "Flame Sergeant Second Class"
+                },
+                {
+                    "RankID": 6,
+                    "Name": "Flame Sergeant First Class"
+                },
+                {
+                    "RankID": 7,
+                    "Name": "Chief Flame Sergeant"
+                },
+                {
+                    "RankID": 8,
+                    "Name": "Second Flame Lieutenant"
+                },
+                {
+                    "RankID": 9,
+                    "Name": "First Flame Lieutenant"
+                }
+            ]
+        }
+    ], 
+
+  "ClassJobs": [
+    {
+      "ID": 0,
+      "Name": "ADV"
+    },
+    {
+      "ID": 1,
+      "Name": "GLA"
+    },
+    {
+      "ID": 2,
+      "Name": "PGL"
+    },
+    {
+      "ID": 3,
+      "Name": "MRD"
+    },
+    {
+      "ID": 4,
+      "Name": "LNC"
+    },
+    {
+      "ID": 5,
+      "Name": "ARC"
+    },
+    {
+      "ID": 6,
+      "Name": "CNJ"
+    },
+    {
+      "ID": 7,
+      "Name": "THM"
+    },
+    {
+      "ID": 8,
+      "Name": "CRP"
+    },
+    {
+      "ID": 9,
+      "Name": "BSM"
+    },
+    {
+      "ID": 10,
+      "Name": "ARM"
+    },
+    {
+      "ID": 11,
+      "Name": "GSM"
+    },
+    {
+      "ID": 12,
+      "Name": "LTW"
+    },
+    {
+      "ID": 13,
+      "Name": "WVR"
+    },
+    {
+      "ID": 14,
+      "Name": "ALC"
+    },
+    {
+      "ID": 15,
+      "Name": "CUL"
+    },
+    {
+      "ID": 16,
+      "Name": "MIN"
+    },
+    {
+      "ID": 17,
+      "Name": "BTN"
+    },
+    {
+      "ID": 18,
+      "Name": "FSH"
+    },
+    {
+      "ID": 19,
+      "Name": "PLD"
+    },
+    {
+      "ID": 20,
+      "Name": "MNK"
+    },
+    {
+      "ID": 21,
+      "Name": "WAR"
+    },
+    {
+      "ID": 22,
+      "Name": "DRG"
+    },
+    {
+      "ID": 23,
+      "Name": "BRD"
+    },
+    {
+      "ID": 24,
+      "Name": "WHM"
+    },
+    {
+      "ID": 25,
+      "Name": "BLM"
+    },
+    {
+      "ID": 26,
+      "Name": "ACN"
+    },
+    {
+      "ID": 27,
+      "Name": "SMN"
+    },
+    {
+      "ID": 28,
+      "Name": "SCH"
+    },
+    {
+      "ID": 29,
+      "Name": "ROG"
+    },
+    {
+      "ID": 30,
+      "Name": "NIN"
+    },
+    {
+      "ID": 31,
+      "Name": "MCH"
+    },
+    {
+      "ID": 32,
+      "Name": "DRK"
+    },
+    {
+      "ID": 33,
+      "Name": "AST"
+    },
+    {
+      "ID": 34,
+      "Name": "SAM"
+    },
+    {
+      "ID": 35,
+      "Name": "RDM"
+    }
+  ], 
+
+    "Minions": [
+      {
+        "ID": 0,
+        "MinionTotal": 303
+      }
+    ],
+    "Mounts": [
+      {
+        "ID": 1,
+        "MountTotal": 169
+      }
+    ], 
+
+    "Races": [
+        {
+            "ID": 0,
+            "Name": "Hyur"
+        },
+        {
+            "ID": 1,
+            "Name": "Elezen"
+        },
+        {
+            "ID": 2,
+            "Name": "Lalafell"
+        },
+        {
+            "ID": 3,
+            "Name": "Miqo'te"
+        },
+        {
+            "ID": 4,
+            "Name": "Roegadyn"
+        },
+        {
+            "ID": 5,
+            "Name": "Au Ra"
+        }
+    ],
+    "Tribes": [
+        {
+            "ID": 0,
+            "Name": "Midlander"
+        },
+        {
+            "ID": 1,
+            "Name": "Highlander"
+        },
+        {
+            "ID": 2,
+            "Name": "Wildwood"
+        },
+        {
+            "ID": 3,
+            "Name": "Wildwood"
+        },
+        {
+            "ID": 4,
+            "Name": "Plainsfolk"
+        },
+        {
+            "ID": 5,
+            "Name": "Dunesfolk"
+        },
+        {
+            "ID": 6,
+            "Name": "Seeker of the Sun"
+        },
+        {
+            "ID": 7,
+            "Name": "Keeper of the Moon"
+        },
+        {
+            "ID": 8,
+            "Name": "Sea Wolf"
+        },
+        {
+            "ID": 9,
+            "Name": "Hellsguard"
+        },
+        {
+            "ID": 10,
+            "Name": "Raen"
+        },
+        {
+            "ID": 11,
+            "Name": "Xaela"
+        }
+    ]
+}
