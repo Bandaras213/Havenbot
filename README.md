@@ -53,11 +53,11 @@
 			+ Fetches XIVAPI data of a given Charactername to see if it exits and what Rank they are inside the Free Company. Changes their Nickname and assigns them their Rank Role, then sends an embed with their Lodestone information and Discord tag. (Server is always Ragnarok)
 
 	* ### Info
-		- help
+		- **help**
 			+ Sends an embed with all available commands with short explanations. (still manually added)
-		- fcinfo
+		- **fcinfo**
 			+ Sends an embed with Free Company information from the lodestone. (not fetching, hard coded)
-		- lookup
+		- **lookup**
 			+ Sends an embed with Character information of a given Character from the XIVAPI .
 
 	* ### Fun
@@ -90,6 +90,7 @@
 
 * **Programming**
   - xTobiShotz (A'rata Kokonoe)
+  - Bandaras213
 
 + **Ideas**
   * Fetching Lodestone Info on **iam**

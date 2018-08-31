@@ -41,7 +41,7 @@ module.exports = (bot, member, moment) => {
             },
         ]
     };
-    member.guild.channels.find(c=>c.name==="memberlog").send({ embed });
+    member.guild.channels.find(c => c.name === "member-log").send({ embed });
 
     bot.log(`${member.displayName} (${member.user.tag}) left the ${member.guild} Server`, "Leave");
 };
