@@ -4,8 +4,8 @@ module.exports = async (bot, message, args, Discord, moment) => {
 
     if (message.member.roles.some(r => ["Captain", "Commander",].includes(r.name))) {
 
-        if (!deleteCount || deleteCount < 1 || deleteCount > 100)
-            return message.reply("Invalid argument! **[Number has to be between 1 and 100]**"), message.react('❌');
+        if (!deleteCount || deleteCount < 1 || deleteCount > 99)
+            return message.reply("Invalid argument! **[Number has to be between 1 and 99]**"), message.react('❌');
 
         const fetched = await message.channel.fetchMessages({ limit: deleteCount + 1 });
         message.channel.bulkDelete(fetched)

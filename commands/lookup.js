@@ -15,17 +15,20 @@ module.exports = async (bot, message, args, Discord, moment) => {
     if (!args[1]) {
         return message.reply(`${user}, Invalid argument! **[Character Name Format: Firstname Lastname]**`), message.react('❌');
     };
+    if (args[2]) {
+        return message.reply(`${user}, Invalid argument! **[Character Name Format: Firstname Lastname]**`), message.react('❌');
+    };
 
     let firstname = args[0].charAt(0).toUpperCase() + args[0].substring(1);
     let lastname = args[1].charAt(0).toUpperCase() + args[1].substring(1);
 
-    snekfetch.get("https://xivapi.com/character/search?name=" + args.join("%20") + "&server=Ragnarok" + `&key=${bot.config.xivapikey}`).then(async res => {
-        if (res.body.Total === 0) {
+    await snekfetch.get("https://xivapi.com/character/search?name=" + args.join("%20") + "&server=Ragnarok" + `&key=${bot.config.xivapikey}`).then(async res => {
+        if (res.body.Pagination.ResultsTotal === 0) {
             return m.edit(`${user}, Invalid argument! **[Cannot find character "${args.join(" ")}"!]**`), message.react('❌');
         };
 
         let searchTerm = `${firstname} ${lastname}`;
-        let results = res.body.Characters;
+        let results = res.body.Results;
         let lodeID = results.filter(function (results) {
             return results.Name.indexOf(searchTerm) > -1;
         });
@@ -67,13 +70,48 @@ module.exports = async (bot, message, args, Discord, moment) => {
                 Gender = "Female"
             };
 
+            let Jobs = [
+                //Tanks
+                searCharacter.ClassJobs["1_19"], //PLD
+                searCharacter.ClassJobs["3_21"], //WAR
+                searCharacter.ClassJobs["32_32"], //DRK
+                //Healer
+                searCharacter.ClassJobs["6_24"], //WHM
+                searCharacter.ClassJobs["26_28"], //SCH
+                searCharacter.ClassJobs["33_33"], //AST
+                //DPS
+                searCharacter.ClassJobs["2_20"], //MNK
+                searCharacter.ClassJobs["4_22"], //DRG
+                searCharacter.ClassJobs["29_30"], //NIN
+                searCharacter.ClassJobs["34_34"], //SAM
+                searCharacter.ClassJobs["5_23"], //BRD
+                searCharacter.ClassJobs["31_31"], //MCH
+                searCharacter.ClassJobs["7_25"], //BLM
+                searCharacter.ClassJobs["26_27"], //SMN
+                searCharacter.ClassJobs["35_35"], //RDM
+                //Gathering
+                searCharacter.ClassJobs["16_16"], //MIN
+                searCharacter.ClassJobs["17_17"], //BTN
+                searCharacter.ClassJobs["18_18"], //FSH
+                //Crafting
+                searCharacter.ClassJobs["8_8"], //CRP
+                searCharacter.ClassJobs["9_9"], //BSM
+                searCharacter.ClassJobs["10_10"], //ARM
+                searCharacter.ClassJobs["11_11"], //GSM
+                searCharacter.ClassJobs["12_12"], //LTW
+                searCharacter.ClassJobs["13_13"], //WVR
+                searCharacter.ClassJobs["14_14"], //ALC
+                searCharacter.ClassJobs["15_15"], //CUL
+
+            ];
+
             let embed = {
                 "color": 1981831,
                 "thumbnail": {
                     "url": `${searCharacter.Portrait}`
                 },
                 "author": {
-                    "name": `Overview of ${searCharacter.Name}`,
+                    "name": `Character Overview of ${searCharacter.Name}`,
                     "icon_url": `${searCharacter.Avatar}`,
                     "url": `https://eu.finalfantasyxiv.com/lodestone/character/${searCharacter.ID}`,
                 },
@@ -128,11 +166,50 @@ module.exports = async (bot, message, args, Discord, moment) => {
                         "value": `[Click Me](https://eu.finalfantasyxiv.com/lodestone/character/${searCharacter.ID})`,
                         "inline": true
                     },
+                    {
+                        "name": `Job Overview of ${searCharacter.Name}`,
+                        "value": "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯"
+                    },
+                    {
+                        "name": "Disciples of War",
+                        "value": "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯"
+                    },
+                    {
+                        "name": "__Tanks__",
+                        "value": `**PLD:** ${Jobs[0].Level}, **WAR:** ${Jobs[1].Level}, **DRK:** ${Jobs[2].Level}`
+                    },
+                    {
+                        "name": "__DPS__",
+                        "value": `**MNK:** ${Jobs[6].Level}, **DRG:** ${Jobs[7].Level}, **NIN:** ${Jobs[8].Level}, **SAM:** ${Jobs[9].Level}, **BRD:** ${Jobs[10].Level}, **MCH:** ${Jobs[11].Level}`
+                    },
+                    {
+                        "name": "Disciples of Magic",
+                        "value": "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯"
+                    },
+                    {
+                        "name": "__Healers__",
+                        "value": `**WHM:** ${Jobs[3].Level}, **SCH:** ${Jobs[4].Level}, **AST:** ${Jobs[5].Level}`
+                    },
+                    {
+                        "name": "__DPS__",
+                        "value": `**BLM:** ${Jobs[12].Level}, **SMN:** ${Jobs[13].Level}, **RDM:** ${Jobs[14].Level}`
+                    },
+                    {
+                        "name": "Disciples of Land & Hand",
+                        "value": "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯"
+                    },
+                    {
+                        "name": "__Gathering__",
+                        "value": `**MIN:** ${Jobs[15].Level}, **BTN:** ${Jobs[16].Level}, **FSH:** ${Jobs[17].Level}`
+                    },
+                    {
+                        "name": "__Crafting__",
+                        "value": `**CRP:** ${Jobs[18].Level}, **BSM:** ${Jobs[19].Level}, **ARM:** ${Jobs[20].Level}, **GSM:** ${Jobs[21].Level}, **LTW:** ${Jobs[22].Level}, **WVR:** ${Jobs[23].Level}, **ALC:** ${Jobs[24].Level}, **CUL:** ${Jobs[25].Level}`
+                    },
                 ]
             };
 
-
-            await m.edit({ embed });
+            await m.edit({ embed: embed });
             await message.react('✅');
         });
 

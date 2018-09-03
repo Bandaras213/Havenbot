@@ -10,7 +10,7 @@ module.exports = (bot, message, args, Discord, moment) => {
         .addField(".poll [Question]", "Lets you make a poll using reactions", false)
         .addField(".rate", "Rates You/Something out of 10", false)
         .addField(".d6 / .d20", "Rolls a D6 / D20 for you", false)
-        .addField(".ping", "Calculates Bot and API latency", false)
+        .addField(".lookup [Character Name]", "Shows Lodestone Information about a given Character (Ragnarok Only)", false)
         .setFooter("If there are any issues with the bot please @xTobiShotz#0142 on Discord.")
         .setColor(message.guild.roles.find(r => r.name === "Commander").hexColor);
     message.channel.send(embed);

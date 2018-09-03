@@ -7,7 +7,7 @@ module.exports = (bot, message, args, Discord, moment) => {
 
     if (message.member.user.id == bot.config.ownerID) {
         snekfetch.get("https://xivapi.com/Companion" + `?key=${bot.config.xivapikey}`).then(async res => {
-            let MinTotal = res.body.pagination.results_total
+            let MinTotal = res.body.Pagination.ResultsTotal
 
             let MinionJ = JSON.parse(fs.readFileSync(Datafilter, 'utf8'));
             var MinionFilter = MinionJ.Minions.filter(ID => ID.ID == 0);
@@ -26,7 +26,7 @@ module.exports = (bot, message, args, Discord, moment) => {
         });
 
         snekfetch.get("https://xivapi.com/Mount" + `?key=${bot.config.xivapikey}`).then(async res => {
-            let MouTotal = res.body.pagination.results_total
+            let MouTotal = res.body.Pagination.ResultsTotal
 
             let MountJ = JSON.parse(fs.readFileSync(Datafilter, 'utf8'));
             var MountFilter = MountJ.Mounts.filter(ID => ID.ID == 1);

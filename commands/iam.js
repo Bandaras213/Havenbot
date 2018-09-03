@@ -13,8 +13,10 @@ module.exports = async (bot, message, args, Discord) => {
     if (!args[0]) {
         return m.edit(`${user}, Missing argument! **[Character Name]**`), message.react('❌');
     };
-
     if (!args[1]) {
+        return m.edit(`${user}, Invalid argument! **[Character Name Format: Firstname Lastname]**`), message.react('❌');
+    };
+    if (args[2]) {
         return m.edit(`${user}, Invalid argument! **[Character Name Format: Firstname Lastname]**`), message.react('❌');
     };
 
@@ -22,12 +24,12 @@ module.exports = async (bot, message, args, Discord) => {
     let lastname = args[1].charAt(0).toUpperCase() + args[1].substring(1);
 
     snekfetch.get("https://xivapi.com/character/search?name=" + args.join("%20") + "&server=Ragnarok" + `&key=${bot.config.xivapikey}`).then(async res => {
-        if (res.body.Total === 0) {
+        if (res.body.Pagination.ResultsTotal === 0) {
             return m.edit(`${user}, Invalid argument! **[Cannot find character "${args.join(" ")}"!]**`), message.react('❌');
         };
 
         var searchTerm = `${firstname} ${lastname}`;
-        var results = res.body.Characters;
+        var results = res.body.Results;
         var lodeID = results.filter(function (results) {
             return results.Name.indexOf(searchTerm) > -1;
         });
