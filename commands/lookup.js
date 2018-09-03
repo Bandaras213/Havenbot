@@ -12,11 +12,11 @@ module.exports = async (bot, message, args, Discord, moment) => {
         return m.edit(`${user}, Missing argument! **[Character Name]**`), message.react('❌');
     };
 
-    if (!args[1]) {
-        return message.reply(`${user}, Invalid argument! **[Character Name Format: Firstname Lastname]**`), message.react('❌');
+    if (args.length < 2) {
+        return m.edit(`${user}, Invalid argument! **[Character Name Format: Firstname Lastname]**`), message.react('❌');
     };
     if (args.length > 2) {
-        return message.reply(`${user}, Invalid argument! **[Character Name Format: Firstname Lastname]**`), message.react('❌');
+        return m.edit(`${user}, Invalid argument! **[Character Name Format: Firstname Lastname]**`), message.react('❌');
     };
 
     let firstname = args[0].charAt(0).toUpperCase() + args[0].substring(1);

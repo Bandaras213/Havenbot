@@ -13,7 +13,7 @@ module.exports = async (bot, message, args, Discord) => {
     if (!args[0]) {
         return m.edit(`${user}, Missing argument! **[Character Name]**`), message.react('❌');
     };
-    if (!args[1]) {
+    if (args.length < 2) {
         return m.edit(`${user}, Invalid argument! **[Character Name Format: Firstname Lastname]**`), message.react('❌');
     };
     if (args.length > 2) {
