@@ -15,7 +15,7 @@ module.exports = async (bot, message, args, Discord, moment) => {
     if (!args[1]) {
         return message.reply(`${user}, Invalid argument! **[Character Name Format: Firstname Lastname]**`), message.react('❌');
     };
-    if (args[2]) {
+    if (args.length > 2) {
         return message.reply(`${user}, Invalid argument! **[Character Name Format: Firstname Lastname]**`), message.react('❌');
     };
 
