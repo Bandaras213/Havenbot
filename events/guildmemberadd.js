@@ -44,7 +44,6 @@ module.exports = async (bot, member, moment) => {
         ]
     };
     await member.addRole(VisRole);
-    await member.guild.channels.find(c => c.name === "main").send(`Welcome ${member.user} to the ${member.guild} Discord! **Please read <#418201549597048844> and verify yourself to get access to all channels!** <:Haven:430425064589230082>`);
     await member.guild.channels.find(c => c.name === "member-log").send({ embed });
 
     bot.log(`${member.displayName} (${member.user.tag}) joined the ${member.guild} Server`, "Join");

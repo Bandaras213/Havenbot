@@ -1,5 +1,5 @@
 const snekfetch = require("snekfetch");
-const fs = require("fs");
+const ms = require("ms");
 
 module.exports = async (bot, message, args, Discord) => {
 
@@ -10,22 +10,24 @@ module.exports = async (bot, message, args, Discord) => {
         return m.edit(`${user}, It looks like you already verified yourself! For a Namechange please ask an Sergeant (or higher)!`), message.react('❌');
     };
 
-    if (!args[0]) {
-        return m.edit(`${user}, Missing argument! **[Character Name]**`), message.react('❌');
-    };
-    if (args.length < 2) {
-        return m.edit(`${user}, Invalid argument! **[Character Name Format: Firstname Lastname]**`), message.react('❌');
-    };
-    if (args.length > 2) {
-        return m.edit(`${user}, Invalid argument! **[Character Name Format: Firstname Lastname]**`), message.react('❌');
+    if (args.length != 2) {
+        return m.edit(`${user}, Invalid or Missing argument! **[Character Name Format: Firstname Lastname]**`), message.react('❌'),
+            setTimeout(() => {
+                message.delete();
+                m.delete()
+            }, ms("30s"));
     };
 
     let firstname = args[0].charAt(0).toUpperCase() + args[0].substring(1);
     let lastname = args[1].charAt(0).toUpperCase() + args[1].substring(1);
 
-    snekfetch.get("https://xivapi.com/character/search?name=" + args.join("%20") + "&server=Ragnarok" + `&key=${bot.config.xivapikey}`).then(async res => {
+    await snekfetch.get("https://xivapi.com/character/search?name=" + args.join("%20") + "&server=Ragnarok" + `&key=${bot.config.xivapikey}`).then(async res => {
         if (res.body.Pagination.ResultsTotal === 0) {
-            return m.edit(`${user}, Invalid argument! **[Cannot find character "${args.join(" ")}"!]**`), message.react('❌');
+            return m.edit(`${user}, Invalid argument! **[Cannot find character "${args.join(" ")}"!]**`), message.react('❌'),
+                setTimeout(() => {
+                    message.delete();
+                    m.delete()
+                }, ms("30s"));
         };
 
         var searchTerm = `${firstname} ${lastname}`;
@@ -35,7 +37,11 @@ module.exports = async (bot, message, args, Discord) => {
         });
 
         if (lodeID[0] === undefined) {
-            return m.edit(`${user}, Invalid argument! **[Cannot find character "${args.join(" ")}"!]**`), message.react('❌');
+            return m.edit(`${user}, Invalid argument! **[Cannot find character "${args.join(" ")}"!]**`), message.react('❌'),
+                setTimeout(() => {
+                    message.delete();
+                    m.delete()
+                }, ms("30s"));
         };
 
         await snekfetch.get("https://xivapi.com/freecompany/9237023573225331624?data=FCM" + `&key=${bot.config.xivapikey}`).then(async sear => {
@@ -63,7 +69,7 @@ module.exports = async (bot, message, args, Discord) => {
                     "url": `${lodeID[0].Avatar}`
                 },
                 "author": {
-                    "name": `${lodeID[0].Name} is now Verified!`,
+                    "name": `Please welcome ${lodeID[0].Name} to the ${message.member.guild} Discord!`,
                     "icon_url": `${lodeID[0].Avatar}`,
                     "url": `https://eu.finalfantasyxiv.com/lodestone/character/${lodeID[0].ID}`,
                 },
@@ -94,8 +100,9 @@ module.exports = async (bot, message, args, Discord) => {
             await message.member.setNickname(`${lodeID[0].Name}`);
             await message.member.removeRole(message.member.guild.roles.find(r => r.name === "Visitor"));
             await message.member.addRole(FetRole);
-            await m.edit({ embed });
-            await message.react('✅');
+            await message.member.guild.channels.find(c => c.name === "main").send({ embed });
+            await message.delete();
+            await m.delete();
 
 
         });

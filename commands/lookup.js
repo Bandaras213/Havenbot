@@ -8,15 +8,8 @@ module.exports = async (bot, message, args, Discord, moment) => {
     let user = message.member.user
     const m = await message.channel.send(`${user}, Looking for Character **"${args.join(" ")}"** on Ragnarok... Give me a sec...`);
 
-    if (!args[0]) {
-        return m.edit(`${user}, Missing argument! **[Character Name]**`), message.react('❌');
-    };
-
-    if (args.length < 2) {
-        return m.edit(`${user}, Invalid argument! **[Character Name Format: Firstname Lastname]**`), message.react('❌');
-    };
-    if (args.length > 2) {
-        return m.edit(`${user}, Invalid argument! **[Character Name Format: Firstname Lastname]**`), message.react('❌');
+    if (args.length != 2) {
+        return m.edit(`${user}, Invalid or Missing argument! **[Character Name Format: Firstname Lastname]**`), message.react('❌');
     };
 
     let firstname = args[0].charAt(0).toUpperCase() + args[0].substring(1);
