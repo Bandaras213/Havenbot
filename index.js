@@ -38,6 +38,7 @@ bot.commands.set('say', require('./commands/say.js'));
 bot.commands.set('lookup', require('./commands/lookup.js'));
 bot.commands.set('mute', require('./commands/mute.js'));
 bot.commands.set('updatedata', require('./commands/updatedata.js'));
+bot.commands.set('test', require('./commands/test.js'));
 
 //Login with the Token
 bot.login(bot.config.token);

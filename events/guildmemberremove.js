@@ -8,6 +8,7 @@ module.exports = (bot, member, moment) => {
 
     let embed = {
         "color": 16711680,
+        "timestamp": `${moment().format()}`,
         "thumbnail": {
             "url": `https://puu.sh/AWOvD.png`,
         },
@@ -16,21 +17,21 @@ module.exports = (bot, member, moment) => {
             "icon_url": `${embedicon}`,
         },
         "footer": {
-            "text": `${member.displayName} had been on ${member.guild} since: ${moment(member.joinedAt).format('DD/MM/YYYY')}`,
+            "text": `${member.displayName} had been in ${member.guild} since: ${moment(member.joinedAt).format('DD/MM/YYYY')}`,
         },
         "fields": [
             {
-                "name": "User:",
+                "name": "Discord User:",
                 "value": `${member.user}`,
                 "inline": true,
             },
             {
-                "name": "Displayname:",
+                "name": "Character Name:",
                 "value": `${member.displayName}`,
                 "inline": true,
             },
             {
-                "name": "Tag:",
+                "name": "Discord Tag:",
                 "value": `${member.user.tag}`,
                 "inline": true,
             },

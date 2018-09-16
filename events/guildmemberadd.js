@@ -10,6 +10,7 @@ module.exports = async (bot, member, moment) => {
 
     let embed = {
         "color": 65280,
+        "timestamp": `${moment().format()}`,
         "thumbnail": {
             "url": `https://puu.sh/AWOvv.png`,
         },
@@ -22,17 +23,17 @@ module.exports = async (bot, member, moment) => {
         },
         "fields": [
             {
-                "name": "User",
+                "name": "Discord User:",
                 "value": `${member.user}`,
                 "inline": true,
             },
             {
-                "name": "Displayname:",
+                "name": "Display Name:",
                 "value": `${member.displayName}`,
                 "inline": true,
             },
             {
-                "name": "Tag:",
+                "name": "Discord Tag:",
                 "value": `${member.user.tag}`,
                 "inline": true,
             },

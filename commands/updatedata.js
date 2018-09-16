@@ -17,7 +17,7 @@ module.exports = (bot, message, args, Discord, moment) => {
                 MinionJ["Minions"] = [{
                     ID: 0,
                     MinionTotal: MinTotal
-                }]
+                }];
             };
 
             await fs.writeFile(Datafilter, JSON.stringify(MinionJ, null, 2), 'utf8', (err) => {
@@ -36,7 +36,7 @@ module.exports = (bot, message, args, Discord, moment) => {
                 MountJ["Mounts"] = [{
                     ID: 1,
                     MountTotal: MouTotal
-                }]
+                }];
             };
 
             await fs.writeFile(Datafilter, JSON.stringify(MountJ, null, 2), 'utf8', (err) => {

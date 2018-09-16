@@ -19,5 +19,5 @@ module.exports = (bot, message, args, Discord, moment) => {
         }, ms(time));
     } else {
         return message.delete(), message.reply(`You dont have permission to use that command!`);
-    }
+    };
 };

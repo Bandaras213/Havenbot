@@ -14,5 +14,5 @@ module.exports = async (bot, message, args, Discord, moment) => {
     }
     else {
         return message.delete(), message.reply(`You dont have permission to use this command!`);
-    }
+    };
 };

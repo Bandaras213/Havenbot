@@ -8,6 +8,6 @@ module.exports = (bot, message, args, Discord, moment) => {
         .addField("Formed on", "18/07/2017", true)
         .addField("Free Company Estate", "Plot 16, 13 Ward, Shirogane", true)
         .setColor(message.guild.roles.find(r => r.name === "Commander").hexColor)
-        .setURL("https://eu.finalfantasyxiv.com/lodestone/freecompany/9237023573225331624/")
+        .setURL("https://eu.finalfantasyxiv.com/lodestone/freecompany/9237023573225331624/");
     message.channel.send(embed);
 };
