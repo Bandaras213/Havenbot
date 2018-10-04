@@ -1,13 +1,18 @@
 //Requiring Discord.js & Moment.js
 const Discord = require("discord.js");
 const moment = require('moment');
+let token = process.env.KEY
+let ownerid = process.env.OWNERID
+let xivapikey = process.env.XIVAPIKEY
 //Setting moment locale to English
 moment.locale('en');
 
 var bot = new Discord.Client();
 bot.config = require('./config.json');
 bot.log = require('./functions/log.js');
-
+bot.token = token
+bot.ownerid = ownerid
+bot.xivapikey = xivapikey
 //Ready & Activity Handler
 bot.on('ready', () => require('./events/ready.js')(bot));
 //Server Join Handler
@@ -38,7 +43,8 @@ bot.commands.set('say', require('./commands/say.js'));
 bot.commands.set('lookup', require('./commands/lookup.js'));
 bot.commands.set('mute', require('./commands/mute.js'));
 bot.commands.set('updatedata', require('./commands/updatedata.js'));
-bot.commands.set('test', require('./commands/test.js'));
+bot.commands.set('bully', require('./commands/bully.js'));
+bot.commands.set('test', ('./commands/test.js'));
 
 //Login with the Token
-bot.login(bot.config.token);
+bot.login(bot.token);

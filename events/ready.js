@@ -3,20 +3,15 @@ module.exports = (bot) => {
     bot.log(`Bot ${bot.user.tag} has started with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} servers.`, "Started");
     bot.user.setActivity('FINAL FANTASY XIV - A Realm Reborn');
 
-    setInterval(function () {
-        let games = [
-            "Lord of the Verminion",
-            "Triple Triad",
-            "Jumbo Cactpot",
-            "Chocobo Racing",
-            "Crystal Tower Striker",
-            "Cuff-A-Cur",
-            "Monster Toss",
-            "Moogle's Paw",
-            "Out on a Limb",
-            "The Finer Miner",
-        ];
-        let randGame = Math.floor((Math.random() * games.length));
-        bot.user.setActivity(`${games[randGame]}`);
-    }, ms("5m"));
-};
+  const http = require('http');
+const express = require('express');
+const app = express();
+app.get("/", (request, response) => {
+  console.log(Date.now() + " Ping Received");
+  response.sendStatus(200);
+});
+app.listen(process.env.PORT);
+setInterval(() => {
+  http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
+}, 280000);
+}

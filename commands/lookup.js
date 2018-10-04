@@ -13,7 +13,7 @@ const applyText = (canvas, text, fontsize, style) => {
 
 let Datafilter = "data/data.json"
 
-module.exports = async (bot, message, args, Discord, moment) => {
+module.exports = async (bot, message, args, Discord, moment)  => {
 
     let user = message.member.user
     const m = await message.channel.send(`${user}, Looking for Character **"${args.join(" ")}"** on Ragnarok... Give me a sec...`);
@@ -41,22 +41,38 @@ module.exports = async (bot, message, args, Discord, moment) => {
                 return m.edit(`${user}, Invalid argument! **[Cannot find character "${args.join(" ")}"!]**`), message.react('❌');
             };
 
-            await snekfetch.get("https://xivapi.com/character/" + lodeID[0].ID + `?key=${bot.config.xivapikey}`).then(async sear => {
-                if (sear.body.Info.Character.State === 0) {
-                    return m.edit(`${user}, Character **"${args.join(" ")}"** is not in database and cannot be added? This shouldn't happen! Please message A'rata Kokonoe`), message.react('❌');
-                };
-                if (sear.body.Info.Character.State === 1) {
-                    return m.edit(`${user}, Character **"${args.join(" ")}"** has been added to the database! Try again in a few minutes`), message.react('🔁');
-                };
-                if (sear.body.Info.Character.State === 3) {
-                    return m.edit(`${user}, Character **"${args.join(" ")}"** does not exist on The Lodestone? This shouldn't happen! Please message A'rata Kokonoe`), message.react('❌');
-                };
-                if (sear.body.Info.Character.State === 4) {
-                    return m.edit(`${user}, The owner of character **"${args.join(" ")}"** has requested it to be blacklisted. No data can be obtained via the API!`), message.react('❌');
-                };
-                if (sear.body.Info.Character.State === 5) {
-                    return m.edit(`${user}, The owner of character **"${args.join(" ")}"** has set their profile to Private. Please ask them to make their profile public!`), message.react('❌');
-                };
+            await snekfetch.get("https://xivapi.com/character/" + lodeID[0].ID + `?key=${bot.config.xivapikey}`)
+              .then(async sear => {
+switch(sear.body.Info.Character.State)
+{
+  case 0: 
+	  return m.edit(`${user}, Character **"${args.join(" ")}"** is not in database and cannot be added? This shouldn't happen! Please message A'rata Kokonoe`), message.react('❌');
+	case 1: 
+	   return m.edit(`${user}, Character **"${args.join(" ")}"** has been added to the database! Try again in a few minutes`), message.react('🔁');
+	case 3: 
+	   return m.edit(`${user}, Character **"${args.join(" ")}"** does not exist on The Lodestone? This shouldn't happen! Please message A'rata Kokonoe`), message.react('❌');
+	case 4:
+	    return m.edit(`${user}, The owner of character **"${args.join(" ")}"** has requested it to be blacklisted. No data can be obtained via the API!`), message.react('❌');
+	case 5:
+	    return m.edit(`${user}, The owner of character **"${args.join(" ")}"** has set their profile to Private. Please ask them to make their profile public!`), message.react('❌');
+  case 2:
+};
+              console.log("Character Case:" + sear.body.Info.Character.State)
+/*
+	case 0
+	   return m.edit(`${user}, Character **"${args.join(" ")}"** is not in database and cannot be added? This shouldn't happen! Please message A'rata Kokonoe`), message.react('❌');
+	   break; 
+	case 1
+	   return m.edit(`${user}, Character **"${args.join(" ")}"** has been added to the database! Try again in a few minutes`), message.react('🔁');
+	   break; 
+	case 3
+	    return m.edit(`${user}, Character **"${args.join(" ")}"** does not exist on The Lodestone? This shouldn't happen! Please message A'rata Kokonoe`), message.react('❌');
+	    break; 
+	case 4
+	     return  m.edit(`${user}, The owner of character **"${args.join(" ")}"** has requested it to be blacklisted. No data can be obtained via the API!`), message.react('❌');
+	     break;
+	case 5
+	    return m.edit(`${user}, The owner of character **"${args.join(" ")}"** has */
 
                 let searCharacter = sear.body.Character;
 
