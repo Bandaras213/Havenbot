@@ -42,20 +42,17 @@ module.exports = async (bot, message, args, Discord, moment) => {
             };
 
             await snekfetch.get("https://xivapi.com/character/" + lodeID[0].ID + `?key=${bot.config.xivapikey}`).then(async sear => {
-                if (sear.body.Info.Character.State === 0) {
-                    return m.edit(`${user}, Character **"${args.join(" ")}"** is not in database and cannot be added? This shouldn't happen! Please message A'rata Kokonoe`), message.react('❌');
-                };
-                if (sear.body.Info.Character.State === 1) {
-                    return m.edit(`${user}, Character **"${args.join(" ")}"** has been added to the database! Try again in a few minutes`), message.react('🔁');
-                };
-                if (sear.body.Info.Character.State === 3) {
-                    return m.edit(`${user}, Character **"${args.join(" ")}"** does not exist on The Lodestone? This shouldn't happen! Please message A'rata Kokonoe`), message.react('❌');
-                };
-                if (sear.body.Info.Character.State === 4) {
-                    return m.edit(`${user}, The owner of character **"${args.join(" ")}"** has requested it to be blacklisted. No data can be obtained via the API!`), message.react('❌');
-                };
-                if (sear.body.Info.Character.State === 5) {
-                    return m.edit(`${user}, The owner of character **"${args.join(" ")}"** has set their profile to Private. Please ask them to make their profile public!`), message.react('❌');
+                switch (sear.body.Info.Character.State) {
+                    case 0:
+                        return m.edit(`${user}, Character **"${args.join(" ")}"** is not in database and cannot be added? This shouldn't happen! Please message A'rata Kokonoe`), message.react('❌');
+                    case 1:
+                        return m.edit(`${user}, Character **"${args.join(" ")}"** has been added to the database! Try again in a few minutes`), message.react('🔁');
+                    case 3:
+                        return m.edit(`${user}, Character **"${args.join(" ")}"** does not exist on The Lodestone? This shouldn't happen! Please message A'rata Kokonoe`), message.react('❌');
+                    case 4:
+                        return m.edit(`${user}, The owner of character **"${args.join(" ")}"** has requested it to be blacklisted. No data can be obtained via the API!`), message.react('❌');
+                    case 5:
+                        return m.edit(`${user}, The owner of character **"${args.join(" ")}"** has set their profile to Private. Please ask them to make their profile public!`), message.react('❌');
                 };
 
                 let searCharacter = sear.body.Character;
@@ -233,7 +230,6 @@ module.exports = async (bot, message, args, Discord, moment) => {
                     const attachment = new Discord.Attachment(canvas.toBuffer(), `${searCharacter.ID}.png`);
                     await m.delete();
                     await message.channel.send(attachment);
-                    //await m.edit({ embed: embed });
                     await message.react('✅');
                 });
             });

@@ -31,6 +31,7 @@ bot.commands.set('del', require('./commands/del.js'));
 bot.commands.set('fcinfo', require('./commands/fcinfo.js'));
 bot.commands.set('help', require('./commands/help.js'));
 bot.commands.set('iam', require('./commands/iam.js'));
+bot.commands.set('fa', require('./commands/iamforce.js'));
 bot.commands.set('ping', require('./commands/ping.js'));
 bot.commands.set('poll', require('./commands/poll.js'));
 bot.commands.set('rate', require('./commands/rate.js'));
@@ -39,6 +40,7 @@ bot.commands.set('lookup', require('./commands/lookup.js'));
 bot.commands.set('mute', require('./commands/mute.js'));
 bot.commands.set('updatedata', require('./commands/updatedata.js'));
 bot.commands.set('test', require('./commands/test.js'));
+bot.commands.set('ship', require('./commands/ship.js'));
 
 //Login with the Token
 bot.login(bot.config.token);

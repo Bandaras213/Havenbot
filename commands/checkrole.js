@@ -23,5 +23,5 @@ module.exports = (bot, message, args, Discord, moment) => {
         } else return message.reply(`Missing argument! **[Role Name]**`), message.react('❌');
     } else {
         return message.delete(), message.reply(`You dont have permission to use that command!`);
-    }
+    };
 };

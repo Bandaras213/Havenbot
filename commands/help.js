@@ -14,4 +14,5 @@ module.exports = (bot, message, args, Discord, moment) => {
         .setFooter("If there are any issues with the bot please @xTobiShotz#0142 on Discord.")
         .setColor(message.guild.roles.find(r => r.name === "Commander").hexColor);
     message.channel.send(embed);
+    message.react('✅');
 };

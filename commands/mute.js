@@ -11,6 +11,7 @@ module.exports = (bot, message, args, Discord, moment) => {
         member.addRole(MuteRole);
         if (member.voiceChannel) { member.setMute(true) };
         message.channel.send(`${member} has been muted for ${ms(ms(time), { long: true })}!`);
+        message.react('✅');
 
         setTimeout(function () {
             member.removeRole(MuteRole);

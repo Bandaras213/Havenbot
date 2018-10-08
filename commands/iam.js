@@ -84,8 +84,8 @@ module.exports = async (bot, message, args, Discord) => {
                             "inline": true
                         },
                         {
-                            "name": "Lodestone ID:",
-                            "value": `${lodeID[0].ID}`,
+                            "name": "FC Rank:",
+                            "value": `${FetRole.name}`,
                             "inline": true
                         },
                         {
@@ -93,6 +93,7 @@ module.exports = async (bot, message, args, Discord) => {
                             "value": `[Click Me](https://eu.finalfantasyxiv.com/lodestone/character/${lodeID[0].ID})`,
                             "inline": true
                         },
+
                     ]
                 };
 
