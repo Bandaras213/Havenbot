@@ -3,7 +3,6 @@ const ms = require("ms");
 
 module.exports = async (bot, message, args, Discord) => {
     if (message.member.roles.some(r => ["Captain", "Commander", "Lieutenant"].includes(r.name))) {
-
         let user = message.mentions.users.first();
         let firstname = args[1].charAt(0).toUpperCase() + args[1].substring(1);
         let lastname = args[2].charAt(0).toUpperCase() + args[2].substring(1);

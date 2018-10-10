@@ -4,7 +4,6 @@ const snekfetch = require("snekfetch");
 const fs = require("fs");
 let Datafilter = "data/data.json"
 module.exports = (bot, message, args, Discord, moment) => {
-
     if (message.member.user.id == bot.config.ownerID) {
         snekfetch.get("https://xivapi.com/Companion" + `?key=${bot.config.xivapikey}`).then(async res => {
             let MinTotal = res.body.Pagination.ResultsTotal

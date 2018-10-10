@@ -38,5 +38,4 @@ module.exports = (bot, message, args, Discord, moment) => {
         .setColor(message.guild.roles.find(r => r.name === "Commander").hexColor);
     message.delete();
     message.channel.send({ embed });
-
 };

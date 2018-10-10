@@ -1,5 +1,4 @@
 module.exports = (bot, message, args, Discord, moment) => {
-
     if (message.member.roles.some(r => ["Captain", "Commander",].includes(r.name))) {
         if (args[0]) {
             let roleName = args.slice(0).join(" ")
@@ -18,6 +17,7 @@ module.exports = (bot, message, args, Discord, moment) => {
                 "description": membersWithRole.join("\n"),
                 "color": `${message.guild.roles.find(r => r.name === roleName).color}`,
             });
+
             message.delete();
             message.channel.send({ embed });
         } else return message.reply(`Missing argument! **[Role Name]**`), message.react('❌');

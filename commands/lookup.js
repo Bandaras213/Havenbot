@@ -4,7 +4,6 @@ const Canvas = require('canvas');
 
 const applyText = (canvas, text, fontsize, style) => {
     const ctx = canvas.getContext('2d');
-
     do {
         ctx.font = `${style} ${fontsize -= 2}px Arial`;
     } while (ctx.measureText(text).width > 245);
@@ -14,10 +13,8 @@ const applyText = (canvas, text, fontsize, style) => {
 let Datafilter = "data/data.json"
 
 module.exports = async (bot, message, args, Discord, moment) => {
-
     let user = message.member.user
     const m = await message.channel.send(`${user}, Looking for Character **"${args.join(" ")}"** on Ragnarok... Give me a sec...`);
-
     if (args.length != 2) {
         return m.edit(`${user}, Invalid or Missing argument! **[Character Name Format: Firstname Lastname]**`), message.react('❌');
     };
@@ -56,7 +53,6 @@ module.exports = async (bot, message, args, Discord, moment) => {
                 };
 
                 let searCharacter = sear.body.Character;
-
                 let MinionFilter = JSON.parse(fs.readFileSync(Datafilter, 'utf8')).Minions.filter(ID => ID.ID == 0);
                 let MountFilter = JSON.parse(fs.readFileSync(Datafilter, 'utf8')).Mounts.filter(ID => ID.ID == 1);
                 let RaceFilter = JSON.parse(fs.readFileSync(Datafilter, 'utf8')).Races.filter(ID => ID.ID == searCharacter.Race - 1);
@@ -72,7 +68,6 @@ module.exports = async (bot, message, args, Discord, moment) => {
                 };
 
                 let Jobs = JSON.parse(fs.readFileSync(Datafilter, 'utf8')).ClassJobs
-
                 let titleID
                 if (searCharacter.Title == null) {
                     titleID = 0
@@ -81,7 +76,6 @@ module.exports = async (bot, message, args, Discord, moment) => {
                 };
 
                 await snekfetch.get(`https://xivapi.com/Title/` + `${titleID}` + `?key=${bot.config.xivapikey}`).then(async apititle => {
-
                     let title
                     if (searCharacter.Gender === 1) {
                         title = apititle.body.Name
@@ -91,11 +85,9 @@ module.exports = async (bot, message, args, Discord, moment) => {
 
                     const canvas = Canvas.createCanvas(400, 300);
                     const ctx = canvas.getContext('2d');
-
                     const { body: buffer } = await snekfetch.get(searCharacter.Portrait);
                     const portrait = await Canvas.loadImage(buffer);
                     ctx.drawImage(portrait, -33, 0, 220, canvas.height);
-
                     const background = await Canvas.loadImage('./img/JobLevelImage.png');
                     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 

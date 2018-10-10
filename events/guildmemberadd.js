@@ -44,8 +44,8 @@ module.exports = async (bot, member, moment) => {
             }
         ]
     };
+
     await member.addRole(VisRole);
     await member.guild.channels.find(c => c.name === "member-log").send({ embed });
-
     bot.log(`${member.displayName} (${member.user.tag}) joined the ${member.guild} Server`, "Join");
 };

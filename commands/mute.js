@@ -4,8 +4,8 @@ module.exports = (bot, message, args, Discord, moment) => {
 
     if (message.member.roles.some(r => ["Captain", "Commander",].includes(r.name))) {
         let member = message.mentions.members.first();
-        if (!member) return message.reply(`Missing argument! **[Mention]**`), message.react('❌');
         let time = args[1];
+        if (!member) return message.reply(`Missing argument! **[Mention]**`), message.react('❌');
         if (!time) return message.reply(`Missing argument! **[Mute Duration]**`), message.react('❌');
 
         member.addRole(MuteRole);
