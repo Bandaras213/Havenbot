@@ -83,7 +83,9 @@ switch(sear.body.Info.Character.State)
                 let GCNameFilter = JSON.parse(fs.readFileSync(Datafilter, 'utf8')).GrandCompanys.filter(ID => ID.ID == searCharacter.GrandCompany.NameID - 1);
                 let GCRankFilter = GCNameFilter[0].Ranks.filter(RankID => RankID.RankID == searCharacter.GrandCompany.RankID - 1);
 
-                let Jobs = [
+                let Jobs = JSON.parse(fs.readFileSync(Datafilter, 'utf8')).ClassJobs
+                    console.log(Jobs[9].Fid)
+                    /*[
                     //Tanks
                     searCharacter.ClassJobs["1_19"], //PLD
                     searCharacter.ClassJobs["3_21"], //WAR
@@ -116,7 +118,7 @@ switch(sear.body.Info.Character.State)
                     searCharacter.ClassJobs["14_14"], //ALC
                     searCharacter.ClassJobs["15_15"], //CUL
 
-                ];
+                ];*/
 
                 let titleID
                 if (searCharacter.Title == null) {
@@ -186,65 +188,65 @@ switch(sear.body.Info.Character.State)
 
                     //DPS
                     //SAM
-                    ctx.fillText(`${Jobs[9].Level}`, canvas.width / 2.28, 175);
+                    ctx.fillText(searCharacter.ClassJobs[Jobs[9].Fid].Level, canvas.width / 2.28, 175);
                     //NIN
-                    ctx.fillText(`${Jobs[8].Level}`, canvas.width / 2, 175);
+                    ctx.fillText(searCharacter.ClassJobs[Jobs[8].Fid] .Level, canvas.width / 2, 175);
                     //MNK
-                    ctx.fillText(`${Jobs[6].Level}`, canvas.width / 1.76, 175);
+                    ctx.fillText(searCharacter.ClassJobs[Jobs[6].Fid].Level, canvas.width / 1.76, 175);
                     //DRG
-                    ctx.fillText(`${Jobs[7].Level}`, canvas.width / 1.585, 175);
+                    ctx.fillText(searCharacter.ClassJobs[Jobs[7].Fid].Level, canvas.width / 1.585, 175);
                     //MCH
-                    ctx.fillText(`${Jobs[11].Level}`, canvas.width / 1.43, 175);
+                    ctx.fillText(searCharacter.ClassJobs[Jobs[11].Fid].Level, canvas.width / 1.43, 175);
                     //BRD
-                    ctx.fillText(`${Jobs[10].Level}`, canvas.width / 1.315, 175);
+                    ctx.fillText(searCharacter.ClassJobs[Jobs[10].Fid].Level, canvas.width / 1.315, 175);
                     //RDM
-                    ctx.fillText(`${Jobs[14].Level}`, canvas.width / 1.211, 175);
+                    ctx.fillText(searCharacter.ClassJobs[Jobs[14].Fid].Level, canvas.width / 1.211, 175);
                     //SMN
-                    ctx.fillText(`${Jobs[13].Level}`, canvas.width / 1.12, 175);
+                    ctx.fillText(searCharacter.ClassJobs[Jobs[13].Fid].Level, canvas.width / 1.12, 175);
                     //BLM
-                    ctx.fillText(`${Jobs[12].Level}`, canvas.width / 1.045, 175);
+                    ctx.fillText(searCharacter.ClassJobs[Jobs[12].Fid].Level, canvas.width / 1.045, 175);
 
                     //TANKS
                     //PLD    
-                    ctx.fillText(`${Jobs[0].Level}`, canvas.width / 2.05, 213);
+                    ctx.fillText(searCharacter.ClassJobs[Jobs[0].Fid].Level, canvas.width / 2.05, 213);
                     //WAR
-                    ctx.fillText(`${Jobs[1].Level}`, canvas.width / 1.81, 213);
+                    ctx.fillText(searCharacter.ClassJobs[Jobs[1].Fid].Level, canvas.width / 1.81, 213);
                     //DRK
-                    ctx.fillText(`${Jobs[2].Level}`, canvas.width / 1.62, 213);
+                    ctx.fillText(searCharacter.ClassJobs[Jobs[2].Fid].Level, canvas.width / 1.62, 213);
 
                     //HEALER
                     //WHM  
-                    ctx.fillText(`${Jobs[3].Level}`, canvas.width / 1.33, 213);
+                    ctx.fillText(searCharacter.ClassJobs[Jobs[3].Fid].Level, canvas.width / 1.33, 213);
                     //SCH
-                    ctx.fillText(`${Jobs[4].Level}`, canvas.width / 1.227, 213);
+                    ctx.fillText(searCharacter.ClassJobs[Jobs[4].Fid].Level, canvas.width / 1.227, 213);
                     //AST
-                    ctx.fillText(`${Jobs[5].Level}`, canvas.width / 1.138, 213);
+                    ctx.fillText(searCharacter.ClassJobs[Jobs[5].Fid].Level, canvas.width / 1.138, 213);
 
                     //CRAFTERS
                     //CRP
-                    ctx.fillText(`${Jobs[18].Level}`, canvas.width / 2.15, 250);
+                    ctx.fillText(searCharacter.ClassJobs[Jobs[18].Fid].Level, canvas.width / 2.15, 250);
                     //ARM
-                    ctx.fillText(`${Jobs[20].Level}`, canvas.width / 1.91, 250);
+                    ctx.fillText(searCharacter.ClassJobs[Jobs[20].Fid].Level, canvas.width / 1.91, 250);
                     //BSM
-                    ctx.fillText(`${Jobs[19].Level}`, canvas.width / 1.7, 250);
+                    ctx.fillText(searCharacter.ClassJobs[Jobs[19].Fid].Level, canvas.width / 1.7, 250);
                     //GSM
-                    ctx.fillText(`${Jobs[21].Level}`, canvas.width / 1.524, 250);
+                    ctx.fillText(searCharacter.ClassJobs[Jobs[21].Fid].Level, canvas.width / 1.524, 250);
                     //LTW
-                    ctx.fillText(`${Jobs[22].Level}`, canvas.width / 1.385, 250);
+                    ctx.fillText(searCharacter.ClassJobs[Jobs[22].Fid].Level, canvas.width / 1.385, 250);
                     //WVR
-                    ctx.fillText(`${Jobs[23].Level}`, canvas.width / 1.27, 250);
+                    ctx.fillText(searCharacter.ClassJobs[Jobs[23].Fid].Level, canvas.width / 1.27, 250);
                     //ALC
-                    ctx.fillText(`${Jobs[24].Level}`, canvas.width / 1.175, 250);
+                    ctx.fillText(searCharacter.ClassJobs[Jobs[24].Fid].Level, canvas.width / 1.175, 250);
                     //CUL
-                    ctx.fillText(`${Jobs[25].Level}`, canvas.width / 1.09, 250);
+                    ctx.fillText(searCharacter.ClassJobs[Jobs[25].Fid].Level, canvas.width / 1.09, 250);
 
                     //GATHERER
                     //MIN
-                    ctx.fillText(`${Jobs[15].Level}`, canvas.width / 1.595, 288);
+                    ctx.fillText(searCharacter.ClassJobs[Jobs[15].Fid].Level, canvas.width / 1.595, 288);
                     //BTN
-                    ctx.fillText(`${Jobs[16].Level}`, canvas.width / 1.447, 288);
+                    ctx.fillText(searCharacter.ClassJobs[Jobs[16].Fid].Level, canvas.width / 1.447, 288);
                     //FSH
-                    ctx.fillText(`${Jobs[17].Level}`, canvas.width / 1.32, 288);
+                    ctx.fillText(searCharacter.ClassJobs[Jobs[17].Fid].Level, canvas.width / 1.32, 288);
 
                     const attachment = new Discord.Attachment(canvas.toBuffer(), `${searCharacter.ID}.png`);
                     await m.delete();
