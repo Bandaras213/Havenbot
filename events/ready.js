@@ -1,6 +1,6 @@
 const ms = require("ms");
 module.exports = (bot) => {
-    bot.log(`Bot ${bot.user.tag} has started with ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} servers.`, "Started");
+    bot.log(`${bot.user.tag} started with ${bot.users.size} Users, in ${bot.channels.size} Channels of ${bot.guilds.size} Servers.`, "Started");
     bot.user.setActivity('FINAL FANTASY XIV - A Realm Reborn');
 
     setInterval(function () {
