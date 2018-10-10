@@ -310,147 +310,133 @@
     "ClassJobs": [
         {
             "ID": 0,
-            "Name": "ADV"
+            "Name": "PLD",
+            "Fid": "1_19"
         },
         {
             "ID": 1,
-            "Name": "GLA"
+            "Name": "WAR",
+            "Fid": "3_21"
         },
         {
             "ID": 2,
-            "Name": "PGL"
+            "Name": "DRK",
+            "Fid": "32_32"
         },
         {
             "ID": 3,
-            "Name": "MRD"
+            "Name": "WHM",
+            "Fid": "6_24"
         },
         {
             "ID": 4,
-            "Name": "LNC"
+            "Name": "SCH",
+            "Fid": "26_28"
         },
         {
             "ID": 5,
-            "Name": "ARC"
+            "Name": "AST",
+            "Fid": "33_33"
         },
         {
             "ID": 6,
-            "Name": "CNJ"
+            "Name": "MNK",
+            "Fid": "2_20"
         },
         {
             "ID": 7,
-            "Name": "THM"
+            "Name": "DRG",
+            "Fid": "4_22"
         },
         {
             "ID": 8,
-            "Name": "CRP"
+            "Name": "NIN",
+            "Fid": "29_30"
         },
         {
             "ID": 9,
-            "Name": "BSM"
+            "Name": "SAM",
+            "Fid": "34_34"
         },
         {
             "ID": 10,
-            "Name": "ARM"
+            "Name": "BRD",
+            "Fid": "5_23"
         },
         {
             "ID": 11,
-            "Name": "GSM"
+            "Name": "MCH",
+            "Fid": "31_31"
         },
         {
             "ID": 12,
-            "Name": "LTW"
+            "Name": "BLM",
+            "Fid": "7_25"
         },
         {
             "ID": 13,
-            "Name": "WVR"
+            "Name": "SMN",
+            "Fid": "26_27"
         },
         {
             "ID": 14,
-            "Name": "ALC"
+            "Name": "RDM",
+            "Fid": "35_35"
         },
         {
             "ID": 15,
-            "Name": "CUL"
+            "Name": "MIN",
+            "Fid": "16_16"
         },
         {
             "ID": 16,
-            "Name": "MIN"
+            "Name": "BTN",
+            "Fid": "17_17"
         },
         {
             "ID": 17,
-            "Name": "BTN"
+            "Name": "FSH",
+            "Fid": "18_18"
         },
         {
             "ID": 18,
-            "Name": "FSH"
+            "Name": "CRP",
+            "Fid": "8_8"
         },
         {
             "ID": 19,
-            "Name": "PLD"
+            "Name": "BSM",
+            "Fid": "9_9"
         },
         {
             "ID": 20,
-            "Name": "MNK"
+            "Name": "ARM",
+            "Fid": "10_10"
         },
         {
             "ID": 21,
-            "Name": "WAR"
+            "Name": "GSM",
+            "Fid": "11_11"
         },
         {
             "ID": 22,
-            "Name": "DRG"
+            "Name": "LTW",
+            "Fid": "12_12"
         },
         {
             "ID": 23,
-            "Name": "BRD"
+            "Name": "WVR",
+            "Fid": "13_13"
         },
         {
             "ID": 24,
-            "Name": "WHM"
+            "Name": "ALC",
+            "Fid": "14_14"
         },
         {
             "ID": 25,
-            "Name": "BLM"
-        },
-        {
-            "ID": 26,
-            "Name": "ACN"
-        },
-        {
-            "ID": 27,
-            "Name": "SMN"
-        },
-        {
-            "ID": 28,
-            "Name": "SCH"
-        },
-        {
-            "ID": 29,
-            "Name": "ROG"
-        },
-        {
-            "ID": 30,
-            "Name": "NIN"
-        },
-        {
-            "ID": 31,
-            "Name": "MCH"
-        },
-        {
-            "ID": 32,
-            "Name": "DRK"
-        },
-        {
-            "ID": 33,
-            "Name": "AST"
-        },
-        {
-            "ID": 34,
-            "Name": "SAM"
-        },
-        {
-            "ID": 35,
-            "Name": "RDM"
+            "Name": "GUL",
+            "Fid": "15_15"
         }
     ],
     "Minions": [
