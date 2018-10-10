@@ -1,5 +1,5 @@
 module.exports = async (bot, message, args, Discord, moment) => {
-    let percent = Math.floor(Math.random() * 100);
+    let percent = Math.round(Math.random() * 100);
     let text
     let emoji
     if (args[0] && args[1]) {

@@ -6,6 +6,6 @@ module.exports = (bot, message, Discord, moment) => {
 
     if (bot.commands.has(command)) {
         bot.commands.get(command)(bot, message, args, Discord, moment);
-        bot.log(`"${command}" executed by: ${message.member.displayName} (${message.member.user.tag}), Channel: #${message.channel.name}, Server: ${message.member.guild}`, "Command");
+        bot.log(`Executed: .${command}, User: ${message.member.displayName} (${message.member.user.tag}), Channel: #${message.channel.name}, Server: ${message.member.guild}`, "Command");
     };
 };
