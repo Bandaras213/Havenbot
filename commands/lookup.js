@@ -61,10 +61,18 @@ module.exports = async (bot, message, args, Discord, moment) => {
                 let MountFilter = JSON.parse(fs.readFileSync(Datafilter, 'utf8')).Mounts.filter(ID => ID.ID == 1);
                 let RaceFilter = JSON.parse(fs.readFileSync(Datafilter, 'utf8')).Races.filter(ID => ID.ID == searCharacter.Race - 1);
                 let TribesFilter = JSON.parse(fs.readFileSync(Datafilter, 'utf8')).Tribes.filter(ID => ID.ID == searCharacter.Tribe - 1);
-                let GCNameFilter = JSON.parse(fs.readFileSync(Datafilter, 'utf8')).GrandCompanys.filter(ID => ID.ID == searCharacter.GrandCompany.NameID - 1);
-                let GCRankFilter = GCNameFilter[0].Ranks.filter(RankID => RankID.RankID == searCharacter.GrandCompany.RankID - 1);
+                let GCNameFilter
+                let GCRankFilter
+                if (searCharacter.GrandCompany == null) {
+                    GCNameFilter = JSON.parse(fs.readFileSync(Datafilter, 'utf8')).GrandCompanys.filter(ID => ID.ID == 0);
+                    GCRankFilter = GCNameFilter[0].Ranks.filter(RankID => RankID.RankID == 0);
+                } else {
+                    GCNameFilter = JSON.parse(fs.readFileSync(Datafilter, 'utf8')).GrandCompanys.filter(ID => ID.ID == searCharacter.GrandCompany.NameID);
+                    GCRankFilter = GCNameFilter[0].Ranks.filter(RankID => RankID.RankID == searCharacter.GrandCompany.RankID - 1);
+                };
+
                 let Jobs = JSON.parse(fs.readFileSync(Datafilter, 'utf8')).ClassJobs
-                
+
                 let titleID
                 if (searCharacter.Title == null) {
                     titleID = 0
@@ -135,7 +143,7 @@ module.exports = async (bot, message, args, Discord, moment) => {
                     //SAM
                     ctx.fillText(searCharacter.ClassJobs[Jobs[9].Fid].Level, canvas.width / 2.28, 175);
                     //NIN
-                    ctx.fillText(searCharacter.ClassJobs[Jobs[8].Fid] .Level, canvas.width / 2, 175);
+                    ctx.fillText(searCharacter.ClassJobs[Jobs[8].Fid].Level, canvas.width / 2, 175);
                     //MNK
                     ctx.fillText(searCharacter.ClassJobs[Jobs[6].Fid].Level, canvas.width / 1.76, 175);
                     //DRG

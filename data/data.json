@@ -2,6 +2,18 @@
     "GrandCompanys": [
         {
             "ID": 0,
+            "Name": "",
+            "Ranks": [
+                {
+                    "RankID": 0,
+                    "Name": "",
+                    "Icon": "./img/null.png"
+                }
+            ],
+            "Icon": "./img/null.png"
+        },
+        {
+            "ID": 1,
             "Name": "Maelstrom",
             "Ranks": [
                 {
@@ -103,7 +115,7 @@
             "Icon": "./img/Companys/Maelstrom.png"
         },
         {
-            "ID": 1,
+            "ID": 2,
             "Name": "Order of the Twin Adder",
             "Ranks": [
                 {
@@ -205,7 +217,7 @@
             "Icon": "./img/Companys/Order of the Twin Adder.png"
         },
         {
-            "ID": 2,
+            "ID": 3,
             "Name": "Immortal Flames",
             "Ranks": [
                 {
