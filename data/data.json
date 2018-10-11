@@ -2,6 +2,18 @@
     "GrandCompanys": [
         {
             "ID": 0,
+            "Name": "",
+            "Ranks": [
+                {
+                    "RankID": 0,
+                    "Name": "",
+                    "Icon": "./img/null.png"
+                }
+            ],
+            "Icon": "./img/null.png"
+        },
+        {
+            "ID": 1,
             "Name": "Maelstrom",
             "Ranks": [
                 {
@@ -103,7 +115,7 @@
             "Icon": "./img/Companys/Maelstrom.png"
         },
         {
-            "ID": 1,
+            "ID": 2,
             "Name": "Order of the Twin Adder",
             "Ranks": [
                 {
@@ -205,7 +217,7 @@
             "Icon": "./img/Companys/Order of the Twin Adder.png"
         },
         {
-            "ID": 2,
+            "ID": 3,
             "Name": "Immortal Flames",
             "Ranks": [
                 {
@@ -435,7 +447,7 @@
         },
         {
             "ID": 25,
-            "Name": "GUL",
+            "Name": "CUL",
             "Fid": "15_15"
         }
     ],
@@ -526,5 +538,67 @@
             "ID": 11,
             "Name": "Xaela"
         }
-    ]
+    ], 
+    "Shipping":[
+    {
+    "ID": 0,
+    "Name": "Very Bad",
+    "Text":[
+    {
+    "TextID": 0,
+    "Text": "If an embarassing, emotional yet memorable appearance on Jerry Springer is what you're aiming for in life then you should definitely give this relationship a go."
+    }
+   ]
+  },
+  {
+  "ID": 1,
+  "Name": "Bad",
+  "Text":[
+  {
+  "TextID": 0,
+  "Text": "I wouldn't bother if I were you. The story of it not working out is probably going to be too boring to tell anyone anyway."
+ }
+]
+},
+{
+"ID": 2,
+"Name": "Mediocre", 
+"Text":[
+{
+"TextID": 0,
+"Text": "I've heard that if you buy someone enough pizza they can really grow to like you. Maybe that's one thing you could try. I wouldn't hold my breath though."
+} 
+]
+},
+{
+"ID": 3,
+"Name": "Good", 
+"Text":[
+{
+"TextID": 0,
+"Text": "Y'know. This _could_ work, or it _might_ not."
+}
+]
+},
+{
+"ID": 4,
+"Name": "Very Good", 
+"Text":[
+{
+"TextID": 0,
+"Text": "You guys would probably be just fine together! Go on, give each other a lil smooch."
+}
+]
+},
+{
+"ID": 5,
+"Name": "Perfect", 
+"Text":[
+{
+"TextID": 0,
+"Text": "You pair are just meant to be together. Aww. Don't forget to invite us to the wedding!"
+}
+]
+}
+]
 }
