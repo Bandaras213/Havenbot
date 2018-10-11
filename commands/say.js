@@ -1,5 +1,4 @@
 module.exports = (bot, message, args, Discord, moment) => {
-
     if (message.member.roles.some(r => ["Captain", "Commander",].includes(r.name))) {
         message.channel.send(args.join(" "));
         message.delete();

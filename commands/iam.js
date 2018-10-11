@@ -2,10 +2,8 @@ const snekfetch = require("snekfetch");
 const ms = require("ms");
 
 module.exports = async (bot, message, args, Discord) => {
-
     let user = message.member.user
     const m = await message.channel.send(`${user}, Looking for Character **"${args.join(" ")}"** on Ragnarok... Give me a sec...`);
-
     if (!message.member.roles.some(r => ["Visitor",].includes(r.name))) {
         return m.edit(`${user}, You already verified yourself! For a Namechange please ask an Sergeant (or higher)!`), message.react('❌');
     };
@@ -84,8 +82,8 @@ module.exports = async (bot, message, args, Discord) => {
                             "inline": true
                         },
                         {
-                            "name": "Lodestone ID:",
-                            "value": `${lodeID[0].ID}`,
+                            "name": "FC Rank:",
+                            "value": `${FetRole.name}`,
                             "inline": true
                         },
                         {

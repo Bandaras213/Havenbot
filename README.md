@@ -2,7 +2,7 @@
   <img src="https://puu.sh/AXVSD.png" alt="Haven Discord Bot"/>
 </p>
 
-# Haven Bot by xTobiShotz
+# Haven Bot
 **Firstly I would like to mention that this my first programming project!**
 **Lots of things are hard coded, some of the code is messy but I'm sure that as I learn these things all of it will improve!**
 
@@ -17,7 +17,12 @@
 ## Index.js
 **This is the file where everything gets called etc.**
 
-## Functions, Events and Commands
+## Data, Functions, Events, and Commands
+* ## Data
+  - **data**
+	+ Some Local stored data including Grand Companys, Jobs, Race/Tribes and Total number of Mounts/Minions
+  - **img**
+	+ Some Local stored images Images for .lookup like the Background, Grand Companys and their ranks, Guaridan Deitys and Images for the Join/Leave embed.
 
 * ## Functions
   - **Log**
@@ -25,40 +30,43 @@
 
 - ## Events
 	+ **Ready**
-	  * Logs when the bot is ready and sets a random Gold Saucer game as playing activity every 5 minutes.
+	  * Logs when the Bot is ready and sets a random Gold Saucer game as playing activity every 5 minutes.
 	+ **Message**
-		* Picks up messages to filter out the prefix and commands to execute and execute them.
+		* Picks up messages to filter out the prefix and commands to execute and executes them.
 	+ **GuildmemberAdd**
-		* Welcomes the user that joined in the #main channel, assigns the "Visitor" role and sends an embed with some of their Discord information to #memberlog.
+		* Sends an embed with some Discord information of the user that joined to #memberlog.
 	+ **GuildmemberRemove**
 		* Sends an embed with some Discord information of the user that left to #memberlog.
 	+ **Error**
 		* This logs erros such as disconnects and lets it auto reconnect.
- + ## Commands 
- 
+
+ + ## Commands
+
  	* ### Admin Roles Only
 		- **say**
 			+ Lets the bot say anything and deletes the original message.
 		- **del**
-			+ Uses bulkDelete to delete 1-100 messages at once. 
+			+ Uses bulkDelete to delete 1-99 messages at once.
 		- **checkmember**
 			+ Checks the mentioned user and sends an embed with some of their Discord information.
 		- **checkrole**
 			+ Checks a role and sends an embed with all users in the specified role.
 		- **mute**
 			+ Assigns a "Mute" role (and if in a voicechannel, server mutes them) which will make them unable to write/talk for a defined period of time.
-			
+		- **fa (iamforce.js)**
+			+ Adds a member to the Recruit role without checking lodestone. (needed for characters that are too fresh and not on lodestone)
+
 	* ### Verification
 		- **iam**
-			+ Fetches XIVAPI data of a given Charactername to see if it exits and what Rank they are inside the Free Company. Changes their Nickname and assigns them their Rank Role, then sends an embed with their Lodestone information and Discord tag. (Server is always Ragnarok)
+			+ Fetches XIVAPI data of a given Character to see if it exists and what Rank they are inside the Free Company. Changes their Nickname and assigns them their Rank Role, then welcomes them with an embed of their Lodestone  and Discord information in #main.
 
 	* ### Info
 		- **help**
 			+ Sends an embed with all available commands with short explanations. (still manually added)
 		- **fcinfo**
-			+ Sends an embed with Free Company information from the lodestone. (not fetching, hard coded)
-		- **lookup**
-			+ Sends an embed with Character information of a given Character from the XIVAPI .
+			+ Sends an embed with Free Company information from the lodestone. (not fetching api data, hard coded)
+	    - **lookup**
+			+ Fetches XIVAPI data of a given Character and returns an image with their Lodestone stats. (Character Picture, Name, Race/Tribe/Gender, Title, Grand Company + Rank, Nameday, Job Levels)
 
 	* ### Fun
 		- **checkself**
@@ -67,10 +75,13 @@
         	+ Creates a poll with a question given by the user using 👍 / 👎 reactions. (no evaluation)
 		- **rate**
         	+ Rates something / someone (if nothing is specified rates the user that triggered the command) a number out of 10.
+		- **ship**
+			+ Ships two people. (0-100% compatibility)
 		- **8ball**
 			+  Magic 8-Ball for fortune-telling or advice seeking with sassy answers.
 		- **d6 / d20**
 			+ Dice rolling with 6 and 20 sided dice.
+
 	* ### Debug
 		- **ping**
 			+ Gets Bot and API Latency.
@@ -84,6 +95,7 @@
   - Moment.js: [Website](http://momentjs.com/), [Github](https://github.com/moment/moment/)
   - Sneckfetch.js: [Website](https://snekfetch.js.org/), [Github](https://github.com/devsnek/snekfetch)
   - ms.js: [Website](https://npmjs.com/ms), [Github](https://github.com/zeit/ms)
+  - node-canvas.js: [Website](https://www.npmjs.com/package/canvas), [Github](https://github.com/Automattic/node-canvas)
 
 - **API's Used**
 	+ XIVAPI: [Website](https://xivapi.com), [Github](https://github.com/xivapi)
@@ -91,11 +103,3 @@
 * **Programming**
   - xTobiShotz (A'rata Kokonoe)
   - Bandaras213
-
-+ **Ideas**
-  * Fetching Lodestone Info on **iam**
-    + Jessika James
-  * Fun Commands (8ball, d6/20, rate, checkself)
-	- Emilia Rosenthal
-	- Momoshi Bane
-	- Maati Lala

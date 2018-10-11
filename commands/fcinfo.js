@@ -10,4 +10,5 @@ module.exports = (bot, message, args, Discord, moment) => {
         .setColor(message.guild.roles.find(r => r.name === "Commander").hexColor)
         .setURL("https://eu.finalfantasyxiv.com/lodestone/freecompany/9237023573225331624/");
     message.channel.send(embed);
+    message.react('✅');
 };

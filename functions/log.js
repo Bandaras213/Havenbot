@@ -4,5 +4,5 @@ module.exports = (msg, title) => {
         return console.error(`[${title}] ${JSON.stringify(msg, Object.getOwnPropertyNames(msg))}`);
     } else {
         console.log(`[${title}] ${msg}`);
-    }
+    };
 };

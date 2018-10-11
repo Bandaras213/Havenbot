@@ -41,6 +41,7 @@ module.exports = (bot, message, args, Discord, moment) => {
             }
         ]
     };
+
     message.delete();
     message.channel.send({ embed });
 };

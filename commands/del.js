@@ -1,9 +1,6 @@
 module.exports = async (bot, message, args, Discord, moment) => {
-
     const deleteCount = parseInt(args[0], 10);
-
     if (message.member.roles.some(r => ["Captain", "Commander",].includes(r.name))) {
-
         if (!deleteCount || deleteCount < 1 || deleteCount > 99)
             return message.reply("Invalid argument! **[Number has to be between 1 and 99]**"), message.react('❌');
 

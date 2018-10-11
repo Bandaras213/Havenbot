@@ -1,10 +1,8 @@
 module.exports = (bot, message, args, Discord, moment) => {
-
     if (message.member.roles.some(r => ["Captain", "Commander",].includes(r.name))) {
         if (args[0]) {
             let member = message.mentions.members.first();
             if (!member) return message.reply(`Missing argument! **[Mention]**`), message.react('❌');
-
             let embed = {
                 "color": `${member.highestRole.color}`,
                 "thumbnail": {
@@ -47,11 +45,11 @@ module.exports = (bot, message, args, Discord, moment) => {
                     }
                 ]
             };
+
             message.delete();
             message.channel.send({ embed });
-
         } else return message.reply(`Missing argument! **[Mention]**`), message.react('❌');
     } else {
         return message.delete(), message.reply(`You dont have permission to use that command!`);
-    }
+    };
 };
