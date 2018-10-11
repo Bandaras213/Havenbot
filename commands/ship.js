@@ -1,7 +1,13 @@
+
+const fs = require("fs");
 module.exports = async (bot, message, args, Discord, moment) => {
-    let percent = Math.floor(Math.random() * 100 + 1);
+    let percent = Math.floor(Math.random() * 100)+1;
+    let TextMath = Math.floor(Math.random() * 3);
+    let Datafilter = "data/data.json"
     let text
     let emoji
+    let Textfilter = JSON.parse(fs.readFileSync(Datafilter, 'utf8')).Shipping
+
     if (args[0] && args[1]) {
         let person1 = getMemberFromMention(args[0]);
         let person2 = getMemberFromMention(args[1]);
@@ -14,28 +20,32 @@ module.exports = async (bot, message, args, Discord, moment) => {
         };
 
         if (percent < 11) {
-            text = "If an embarassing, emotional yet memorable appearance on Jerry Springer is what you're aiming for in life then you should definitely give this relationship a go.";
+
+            text = Textfilter[0].Text[TextMath].Text
             emoji = "🚫";
         } else if (percent > 10 && percent < 31) {
-            text = "I wouldn't bother if I were you. The story of it not working out is probably going to be too boring to tell anyone anyway.";
+            text = Textfilter[1].Text[TextMath].Text
             emoji = "💢";
         } else if (percent > 30 && percent < 51) {
-            text = "I've heard that if you buy someone enough pizza they can really grow to like you. Maybe that's one thing you could try. I wouldn't hold my breath though.";
+            text = Textfilter[2].Text[TextMath].Text
             emoji = "💔";
         } else if (percent > 50 && percent < 71) {
-            text = "Y'know. This _could_ work, or it _might_ not.";
+            text = Textfilter[3].Text[TextMath].Text
             emoji = "💘";
         } else if (percent > 70 && percent < 100) {
-            text = "You guys would probably be just fine together! Go on, give each other a lil smooch.";
+            text = Textfilter[4].Text[TextMath].Text
             emoji = "💕";
         } else if (percent == 100) {
-            text = "You pair are just meant to be together. Aww. Don't forget to invite us to the wedding!";
+            text = Textfilter[5].Text[TextMath].Text
+
             emoji = "💖";
         };
 
         var embed = new Discord.RichEmbed()
             .setTitle(`${person1.displayName} & ${person2.displayName}`)
-            .addField(`${emoji} **${percent}** ${emoji}`, `${text}`)
+
+            .addField(`${emoji} **${percent}** ${emoji}`, text)
+
             .setColor("#ff0000")
         await message.channel.send({ embed });
         await message.react('✅');
@@ -47,5 +57,9 @@ module.exports = async (bot, message, args, Discord, moment) => {
         const id = matches[1];
         return message.guild.members.get(id);
     };
+
 };
+
+
+
 
