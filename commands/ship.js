@@ -1,7 +1,7 @@
 
 const fs = require("fs");
 module.exports = async (bot, message, args, Discord, moment) => {
-    let percent = Math.floor(Math.random() * 100)+1;
+    let percent = Math.floor(Math.random() * 100 + 1);
     let TextMath = Math.floor(Math.random() * 3);
     let Datafilter = "data/data.json"
     let text
@@ -20,7 +20,6 @@ module.exports = async (bot, message, args, Discord, moment) => {
         };
 
         if (percent < 11) {
-
             text = Textfilter[0].Text[TextMath].Text
             emoji = "🚫";
         } else if (percent > 10 && percent < 31) {
@@ -37,15 +36,12 @@ module.exports = async (bot, message, args, Discord, moment) => {
             emoji = "💕";
         } else if (percent == 100) {
             text = Textfilter[5].Text[TextMath].Text
-
             emoji = "💖";
         };
 
         var embed = new Discord.RichEmbed()
             .setTitle(`${person1.displayName} & ${person2.displayName}`)
-
             .addField(`${emoji} **${percent}** ${emoji}`, text)
-
             .setColor("#ff0000")
         await message.channel.send({ embed });
         await message.react('✅');
@@ -59,7 +55,3 @@ module.exports = async (bot, message, args, Discord, moment) => {
     };
 
 };
-
-
-
-
