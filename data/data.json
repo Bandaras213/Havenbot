@@ -547,7 +547,15 @@
     {
     "TextID": 0,
     "Text": "If an embarassing, emotional yet memorable appearance on Jerry Springer is what you're aiming for in life then you should definitely give this relationship a go."
-    }
+    },
+    {
+    "TextID": 1,
+    "Text": "If an embarassing, emotional yet memorable appearance on Jerry Springer is what you're aiming for in life then you should definitely give this relationship a go."
+   },
+       {
+    "TextID": 2,
+    "Text": "If an embarassing, emotional yet memorable appearance on Jerry Springer is what you're aiming for in life then you should definitely give this relationship a go."
+   }
    ]
   },
   {
@@ -557,7 +565,15 @@
   {
   "TextID": 0,
   "Text": "I wouldn't bother if I were you. The story of it not working out is probably going to be too boring to tell anyone anyway."
- }
+ },
+     {
+    "TextID": 1,
+  "Text": "I wouldn't bother if I were you. The story of it not working out is probably going to be too boring to tell anyone anyway."
+   }, 
+       {
+    "TextID": 2,
+  "Text": "I wouldn't bother if I were you. The story of it not working out is probably going to be too boring to tell anyone anyway."
+   }
 ]
 },
 {
@@ -567,7 +583,15 @@
 {
 "TextID": 0,
 "Text": "I've heard that if you buy someone enough pizza they can really grow to like you. Maybe that's one thing you could try. I wouldn't hold my breath though."
-} 
+},
+    {
+    "TextID": 1,
+"Text": "I've heard that if you buy someone enough pizza they can really grow to like you. Maybe that's one thing you could try. I wouldn't hold my breath though."
+   },
+       {
+    "TextID": 2,
+"Text": "I've heard that if you buy someone enough pizza they can really grow to like you. Maybe that's one thing you could try. I wouldn't hold my breath though."
+   }
 ]
 },
 {
@@ -577,7 +601,15 @@
 {
 "TextID": 0,
 "Text": "Y'know. This _could_ work, or it _might_ not."
-}
+},
+    {
+    "TextID": 1,
+"Text": "Y'know. This _could_ work, or it _might_ not."
+   },
+       {
+    "TextID": 2,
+"Text": "Y'know. This _could_ work, or it _might_ not."
+   }
 ]
 },
 {
@@ -587,7 +619,15 @@
 {
 "TextID": 0,
 "Text": "You guys would probably be just fine together! Go on, give each other a lil smooch."
-}
+},
+    {
+    "TextID": 1,
+"Text": "You guys would probably be just fine together! Go on, give each other a lil smooch."
+   },
+       {
+    "TextID": 2,
+"Text": "You guys would probably be just fine together! Go on, give each other a lil smooch."
+   }
 ]
 },
 {
@@ -597,7 +637,15 @@
 {
 "TextID": 0,
 "Text": "You pair are just meant to be together. Aww. Don't forget to invite us to the wedding!"
-}
+},
+    {
+    "TextID": 1,
+"Text": "You pair are just meant to be together. Aww. Don't forget to invite us to the wedding!"
+   },
+       {
+    "TextID": 2,
+"Text": "You pair are just meant to be together. Aww. Don't forget to invite us to the wedding!"
+   }
 ]
 }
 ]

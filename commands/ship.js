@@ -1,7 +1,7 @@
 const fs = require("fs");
 module.exports = async (bot, message, args, Discord, moment) => {
-    let percent = Math.round(Math.random() * 100);
-    let TextMath = Math.round(Math.random() * 0);
+    let percent = Math.floor(Math.random() * 100)+1;
+    let TextMath = Math.floor(Math.random() * 3);
     let Datafilter = "data/data.json"
     let text
     let emoji
@@ -18,28 +18,28 @@ module.exports = async (bot, message, args, Discord, moment) => {
         };
 
         if (percent < 11) {
-            text = Textfilter[0].Text.TextID[Textfilter]
+            text = Textfilter[0].Text[TextMath].Text
             emoji = "🚫";
         } else if (percent > 10 && percent < 31) {
-            text = Textfilter[1].Text.TextID[Textfilter]
+            text = Textfilter[1].Text[TextMath].Text
             emoji = "💢";
         } else if (percent > 30 && percent < 51) {
-            text = Textfilter[2].Text.TextID[Textfilter]
+            text = Textfilter[2].Text[TextMath].Text
             emoji = "💔";
         } else if (percent > 50 && percent < 71) {
-            text = Textfilter[3].Text.TextID[Textfilter]
+            text = Textfilter[3].Text[TextMath].Text
             emoji = "💘";
         } else if (percent > 70 && percent < 100) {
-            text = Textfilter[4].Text.TextID[Textfilter]
+            text = Textfilter[4].Text[TextMath].Text
             emoji = "💕";
         } else if (percent == 100) {
-            text = Textfilter[5].Text.TextID[Textfilter]
+            text = Textfilter[5].Text[TextMath].Text
             emoji = "💖";
         };
 
         var embed = new Discord.RichEmbed()
             .setTitle(`${person1.displayName} & ${person2.displayName}`)
-            .addField(`${emoji} **${percent}** ${emoji}`, `${text}`)
+            .addField(`${emoji} **${percent}** ${emoji}`, text)
             .setColor("#ff0000")
         await message.channel.send({ embed });
         await message.react('✅');
