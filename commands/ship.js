@@ -21,22 +21,22 @@ module.exports = async (bot, message, args, Discord, moment) => {
 
         if (percent < 11) {
             text = Textfilter[0].Text[TextMath].Text
-            emoji = "🚫";
+            emoji = Textfilter[0].Emoji
         } else if (percent > 10 && percent < 31) {
             text = Textfilter[1].Text[TextMath].Text
-            emoji = "💢";
+            emoji = Textfilter[1].Emoji
         } else if (percent > 30 && percent < 51) {
             text = Textfilter[2].Text[TextMath].Text
-            emoji = "💔";
+            emoji = Textfilter[2].Emoji
         } else if (percent > 50 && percent < 71) {
             text = Textfilter[3].Text[TextMath].Text
-            emoji = "💘";
+            emoji = Textfilter[3].Emoji
         } else if (percent > 70 && percent < 100) {
             text = Textfilter[4].Text[TextMath].Text
-            emoji = "💕";
+            emoji = Textfilter[4].Emoji
         } else if (percent == 100) {
             text = Textfilter[5].Text[TextMath].Text
-            emoji = "💖";
+            emoji = Textfilter[5].Emoji
         };
 
         var embed = new Discord.RichEmbed()
