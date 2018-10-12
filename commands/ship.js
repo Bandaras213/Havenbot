@@ -1,8 +1,6 @@
-
 const fs = require("fs");
 module.exports = async (bot, message, args, Discord, moment) => {
     let percent = Math.floor(Math.random() * 100 + 1);
-    let TextMath = Math.floor(Math.random() * 3);
     let Datafilter = "data/data.json"
     let text
     let emoji
@@ -20,22 +18,22 @@ module.exports = async (bot, message, args, Discord, moment) => {
         };
 
         if (percent < 11) {
-            text = Textfilter[0].Text[TextMath].Text
+            text = Textfilter[0].Text[Math.floor(Math.random() * Textfilter[0].Text.length)].Text
             emoji = Textfilter[0].Emoji
         } else if (percent > 10 && percent < 31) {
-            text = Textfilter[1].Text[TextMath].Text
+            text = Textfilter[1].Text[Math.floor(Math.random() * Textfilter[1].Text.length)].Text
             emoji = Textfilter[1].Emoji
         } else if (percent > 30 && percent < 51) {
-            text = Textfilter[2].Text[TextMath].Text
+            text = Textfilter[2].Text[Math.floor(Math.random() * Textfilter[2].Text.length)].Text
             emoji = Textfilter[2].Emoji
         } else if (percent > 50 && percent < 71) {
-            text = Textfilter[3].Text[TextMath].Text
+            text = Textfilter[3].Text[Math.floor(Math.random() * Textfilter[3].Text.length)].Text
             emoji = Textfilter[3].Emoji
         } else if (percent > 70 && percent < 100) {
-            text = Textfilter[4].Text[TextMath].Text
+            text = Textfilter[4].Text[Math.floor(Math.random() * Textfilter[4].Text.length)].Text
             emoji = Textfilter[4].Emoji
         } else if (percent == 100) {
-            text = Textfilter[5].Text[TextMath].Text
+            text = Textfilter[5].Text[Math.floor(Math.random() * Textfilter[5].Text.length)].Text
             emoji = Textfilter[5].Emoji
         };
 
