@@ -11,9 +11,9 @@ module.exports = async (bot, message, args, Discord) => {
         const m = await message.channel.send(`Force Adding **"${firstname} ${lastname}"** as a ${role}, Give me a sec...`);
 
         if (args[3]) {
-            role = args[3]
-            if (!message.member.roles.find(r => r.name === role)) {
-                return m.edit(`Cannot find Role "${role}"`), message.react('❌'),
+            role = args[3].charAt(0).toUpperCase() + args[3].substring(1)
+            if (!message.guild.roles.find(r => r.name === `${role}`)) {
+                return m.edit(`Cannot find Role **"${role}"!**`), message.react('❌'),
                     setTimeout(() => {
                         message.delete();
                         m.delete()
