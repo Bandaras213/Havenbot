@@ -13,7 +13,7 @@ const applyText = (canvas, text, fontsize, style) => {
 
 let Datafilter = "data/data.json"
 
-module.exports = async (bot, message, args, Discord, moment)  => {
+module.exports = async (bot, message, args, Discord, moment) => {
 
     let user = message.member.user
     const m = await message.channel.send(`${user}, Looking for Character **"${args.join(" ")}"** on Ragnarok... Give me a sec...`);
@@ -41,38 +41,20 @@ module.exports = async (bot, message, args, Discord, moment)  => {
                 return m.edit(`${user}, Invalid argument! **[Cannot find character "${args.join(" ")}"!]**`), message.react('❌');
             };
 
-            await snekfetch.get("https://xivapi.com/character/" + lodeID[0].ID + `?key=${bot.config.xivapikey}`)
-              .then(async sear => {
-switch(sear.body.Info.Character.State)
-{
-  case 0: 
-	  return m.edit(`${user}, Character **"${args.join(" ")}"** is not in database and cannot be added? This shouldn't happen! Please message A'rata Kokonoe`), message.react('❌');
-	case 1: 
-	   return m.edit(`${user}, Character **"${args.join(" ")}"** has been added to the database! Try again in a few minutes`), message.react('🔁');
-	case 3: 
-	   return m.edit(`${user}, Character **"${args.join(" ")}"** does not exist on The Lodestone? This shouldn't happen! Please message A'rata Kokonoe`), message.react('❌');
-	case 4:
-	    return m.edit(`${user}, The owner of character **"${args.join(" ")}"** has requested it to be blacklisted. No data can be obtained via the API!`), message.react('❌');
-	case 5:
-	    return m.edit(`${user}, The owner of character **"${args.join(" ")}"** has set their profile to Private. Please ask them to make their profile public!`), message.react('❌');
-  case 2:
-};
-              console.log("Character Case:" + sear.body.Info.Character.State)
-/*
-	case 0
-	   return m.edit(`${user}, Character **"${args.join(" ")}"** is not in database and cannot be added? This shouldn't happen! Please message A'rata Kokonoe`), message.react('❌');
-	   break; 
-	case 1
-	   return m.edit(`${user}, Character **"${args.join(" ")}"** has been added to the database! Try again in a few minutes`), message.react('🔁');
-	   break; 
-	case 3
-	    return m.edit(`${user}, Character **"${args.join(" ")}"** does not exist on The Lodestone? This shouldn't happen! Please message A'rata Kokonoe`), message.react('❌');
-	    break; 
-	case 4
-	     return  m.edit(`${user}, The owner of character **"${args.join(" ")}"** has requested it to be blacklisted. No data can be obtained via the API!`), message.react('❌');
-	     break;
-	case 5
-	    return m.edit(`${user}, The owner of character **"${args.join(" ")}"** has */
+            await snekfetch.get("https://xivapi.com/character/" + lodeID[0].ID + `?key=${bot.config.xivapikey}`).then(async sear => {
+                switch (sear.body.Info.Character.State) {
+                    case 0:
+                        return m.edit(`${user}, Character **"${args.join(" ")}"** is not in database and cannot be added? This shouldn't happen! Please message A'rata Kokonoe`), message.react('❌');
+                    case 1:
+                        return m.edit(`${user}, Character **"${args.join(" ")}"** has been added to the database! Try again in a few minutes`), message.react('🔁');
+                    case 3:
+                        return m.edit(`${user}, Character **"${args.join(" ")}"** does not exist on The Lodestone? This shouldn't happen! Please message A'rata Kokonoe`), message.react('❌');
+                    case 4:
+                        return m.edit(`${user}, The owner of character **"${args.join(" ")}"** has requested it to be blacklisted. No data can be obtained via the API!`), message.react('❌');
+                    case 5:
+                        return m.edit(`${user}, The owner of character **"${args.join(" ")}"** has set their profile to Private. Please ask them to make their profile public!`), message.react('❌');
+                };
+              console.log(snekfetch)
 
                 let searCharacter = sear.body.Character;
 
@@ -82,44 +64,9 @@ switch(sear.body.Info.Character.State)
                 let TribesFilter = JSON.parse(fs.readFileSync(Datafilter, 'utf8')).Tribes.filter(ID => ID.ID == searCharacter.Tribe - 1);
                 let GCNameFilter = JSON.parse(fs.readFileSync(Datafilter, 'utf8')).GrandCompanys.filter(ID => ID.ID == searCharacter.GrandCompany.NameID - 1);
                 let GCRankFilter = GCNameFilter[0].Ranks.filter(RankID => RankID.RankID == searCharacter.GrandCompany.RankID - 1);
-
                 let Jobs = JSON.parse(fs.readFileSync(Datafilter, 'utf8')).ClassJobs
-                    console.log(Jobs[9].Fid)
-                    /*[
-                    //Tanks
-                    searCharacter.ClassJobs["1_19"], //PLD
-                    searCharacter.ClassJobs["3_21"], //WAR
-                    searCharacter.ClassJobs["32_32"], //DRK
-                    //Healer
-                    searCharacter.ClassJobs["6_24"], //WHM
-                    searCharacter.ClassJobs["26_28"], //SCH
-                    searCharacter.ClassJobs["33_33"], //AST
-                    //DPS
-                    searCharacter.ClassJobs["2_20"], //MNK
-                    searCharacter.ClassJobs["4_22"], //DRG
-                    searCharacter.ClassJobs["29_30"], //NIN
-                    searCharacter.ClassJobs["34_34"], //SAM
-                    searCharacter.ClassJobs["5_23"], //BRD
-                    searCharacter.ClassJobs["31_31"], //MCH
-                    searCharacter.ClassJobs["7_25"], //BLM
-                    searCharacter.ClassJobs["26_27"], //SMN
-                    searCharacter.ClassJobs["35_35"], //RDM
-                    //Gathering
-                    searCharacter.ClassJobs["16_16"], //MIN
-                    searCharacter.ClassJobs["17_17"], //BTN
-                    searCharacter.ClassJobs["18_18"], //FSH
-                    //Crafting
-                    searCharacter.ClassJobs["8_8"], //CRP
-                    searCharacter.ClassJobs["9_9"], //BSM
-                    searCharacter.ClassJobs["10_10"], //ARM
-                    searCharacter.ClassJobs["11_11"], //GSM
-                    searCharacter.ClassJobs["12_12"], //LTW
-                    searCharacter.ClassJobs["13_13"], //WVR
-                    searCharacter.ClassJobs["14_14"], //ALC
-                    searCharacter.ClassJobs["15_15"], //CUL
-
-                ];*/
-
+                console.log(GCNameFilter)
+                console.log(GCRankFilter)
                 let titleID
                 if (searCharacter.Title == null) {
                     titleID = 0
@@ -251,7 +198,6 @@ switch(sear.body.Info.Character.State)
                     const attachment = new Discord.Attachment(canvas.toBuffer(), `${searCharacter.ID}.png`);
                     await m.delete();
                     await message.channel.send(attachment);
-                    //await m.edit({ embed: embed });
                     await message.react('✅');
                 });
             });

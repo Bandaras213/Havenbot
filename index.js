@@ -44,7 +44,7 @@ bot.commands.set('lookup', require('./commands/lookup.js'));
 bot.commands.set('mute', require('./commands/mute.js'));
 bot.commands.set('updatedata', require('./commands/updatedata.js'));
 bot.commands.set('bully', require('./commands/bully.js'));
-bot.commands.set('glatze', require('./commands/glatze.js'));
+bot.commands.set('ship', require('./commands/ship.js'));
 bot.commands.set('test', ('./commands/test.js'));
 
 //Login with the Token

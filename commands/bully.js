@@ -24,6 +24,11 @@ module.exports = async (bot, message, args, Discord, moment) => {
     const parts = brgs.split("-");
     let part1 = parts[1];
     let part2 = parts[2];
+    if (part1 === undefined){
+       part1 = lazytext
+    }else
+    {
+    }
     if (part2 === undefined){
     }else
     {
@@ -80,7 +85,7 @@ module.exports = async (bot, message, args, Discord, moment) => {
   */
     let color0
     if (part3 === undefined) {
-      color0 = "white";
+      color0 = "black";
     }else
     {
       color0 = part3;
@@ -88,7 +93,7 @@ module.exports = async (bot, message, args, Discord, moment) => {
 
     let color1
     if (part2 === undefined) {
-      color1 = "black";
+      color1 = "white";
     }else
     {
       color1 = part2;
