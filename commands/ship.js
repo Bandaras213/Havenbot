@@ -1,6 +1,6 @@
 const fs = require("fs");
 module.exports = async (bot, message, args, Discord, moment) => {
-    let percent = Math.floor(Math.random() * 100 + 1);
+    let percent
     let Datafilter = "data/data.json"
     let text
     let emoji
@@ -15,6 +15,15 @@ module.exports = async (bot, message, args, Discord, moment) => {
 
         if (person1 == person2) {
             return message.reply("Now that's just weird...")
+        };
+
+        //Joris, %?
+        if (person1.id == 418409292048236554 && person2.id == 98605179544285184) {
+            percent = 100
+        } else if (person1.id == 98605179544285184 && person2.id == 418409292048236554) {
+            percent = 100
+        } else {
+            percent = Math.floor(Math.random() * 100 + 1);
         };
 
         if (percent < 11) {
@@ -51,5 +60,4 @@ module.exports = async (bot, message, args, Discord, moment) => {
         const id = matches[1];
         return message.guild.members.get(id);
     };
-
 };
