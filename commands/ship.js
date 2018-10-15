@@ -17,7 +17,6 @@ module.exports = async (bot, message, args, Discord, moment) => {
             return message.reply("Now that's just weird...")
         };
 
-
         let cheatIDS = [
             426806641216716800, //Havenbot
             98605179544285184,
