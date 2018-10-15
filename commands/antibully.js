@@ -92,7 +92,7 @@ module.exports = async (bot, message, args, Discord, moment) => {
   
     const canvas = Canvas.createCanvas(400, 400);
     const ctx = canvas.getContext('2d');
-    const { body: buffer } = await Canvas.loadImage('./img/antibully.png');
+    const { body: buffer } = await Canvas.loadImage('./img/antibully.jpeg');
     const bg = await Canvas.loadImage(buffer);
     ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
    
