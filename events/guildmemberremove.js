@@ -1,7 +1,7 @@
 module.exports = (bot, member, moment) => {
     let embedicon
     if (!member.user.avatarURL) {
-        embedicon = "https://puu.sh/AWOvD.png";
+        embedicon = "attachment://leave.png";
     } else {
         embedicon = member.user.avatarURL;
     };

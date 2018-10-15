@@ -3,7 +3,7 @@ module.exports = async (bot, member, moment) => {
     let embedicon
 
     if (!member.user.avatarURL) {
-        embedicon = "https://puu.sh/AWOvv.png";
+        embedicon = "attachment://join.png";
     } else {
         embedicon = member.user.avatarURL;
     };
