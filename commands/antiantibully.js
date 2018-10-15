@@ -6,7 +6,7 @@ const applyText = (canvas, text, fontsize, style) => {
     const ctx = canvas.getContext('2d');
 
     do {
-        ctx.font = `${style} ${fontsize -= 2}px Arial`;
+        ctx.font = `${style} ${fontsize -= 2}px Courier New`;
     } while (ctx.measureText(text).width > 380);
     return ctx.font;
 };
@@ -78,9 +78,8 @@ module.exports = async (bot, message, args, Discord, moment) => {
 
     const canvas = Canvas.createCanvas(400, 400);
     const ctx = canvas.getContext('2d');
-    const { body: buffer } = await Canvas.loadImage('./img/antiantibully.jpeg');
-    const bg = await Canvas.loadImage(buffer);
-    ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
+    const buffer = await Canvas.loadImage('img/antiantibully.png');
+    ctx.drawImage(buffer, 0, 0, canvas.width, canvas.height);
 
     ctx.font = applyText(canvas, `${customText}`, 60, "bold");
     ctx.strokeStyle = color0;
