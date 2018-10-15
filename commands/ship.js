@@ -17,25 +17,33 @@ module.exports = async (bot, message, args, Discord, moment) => {
             return message.reply("Now that's just weird...")
         };
 
-        //Joris, %?
-        if (person1.id == 418409292048236554 && person2.id == 98605179544285184) {
+
+        let cheatIDS = [
+            426806641216716800, //Havenbot
+            98605179544285184,
+            418409292048236554,
+        ];
+
+        if (cheatIDS.indexOf(person1.id) > 0 && cheatIDS.indexOf(person2.id) > 0) {
             percent = 100
-        } else if (person1.id == 98605179544285184 && person2.id == 418409292048236554) {
+        } else if (cheatIDS.indexOf(person2.id) > 0 && cheatIDS.indexOf(person1.id) > 0) {
+            percent = 100
+        } else if (person1.id == cheatIDS[0] || person2.id == cheatIDS[0]) {
             percent = 100
         } else {
             percent = Math.floor(Math.random() * 100 + 1);
         };
 
-        if (percent < 11) {
+        if (percent <= 10) {
             text = Textfilter[0].Text[Math.floor(Math.random() * Textfilter[0].Text.length)].Text
             emoji = Textfilter[0].Emoji
-        } else if (percent > 10 && percent < 31) {
+        } else if (percent > 10 && percent <= 30) {
             text = Textfilter[1].Text[Math.floor(Math.random() * Textfilter[1].Text.length)].Text
             emoji = Textfilter[1].Emoji
-        } else if (percent > 30 && percent < 51) {
+        } else if (percent > 30 && percent <= 50) {
             text = Textfilter[2].Text[Math.floor(Math.random() * Textfilter[2].Text.length)].Text
             emoji = Textfilter[2].Emoji
-        } else if (percent > 50 && percent < 71) {
+        } else if (percent > 50 && percent <= 70) {
             text = Textfilter[3].Text[Math.floor(Math.random() * Textfilter[3].Text.length)].Text
             emoji = Textfilter[3].Emoji
         } else if (percent > 70 && percent < 100) {
