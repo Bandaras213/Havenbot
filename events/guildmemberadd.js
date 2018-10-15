@@ -12,7 +12,7 @@ module.exports = async (bot, member, moment) => {
         "color": 65280,
         "timestamp": `${moment().format()}`,
         "thumbnail": {
-            "url": `https://puu.sh/AWOvv.png`,
+            "url": "attachment://join.png",
         },
         "author": {
             "name": `${member.displayName} Joined the ${member.guild} Server`,
@@ -46,6 +46,6 @@ module.exports = async (bot, member, moment) => {
     };
 
     await member.addRole(VisRole);
-    await member.guild.channels.find(c => c.name === "member-log").send({ embed });
+    await member.guild.channels.find(c => c.name === "member-log").send({ embed, files: [{ attachment: './img/join.png', name: 'join.png' }] });
     bot.log(`${member.displayName} (${member.user.tag}) joined the ${member.guild} Server`, "Join");
 };

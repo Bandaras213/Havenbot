@@ -10,7 +10,7 @@ module.exports = (bot, member, moment) => {
         "color": 16711680,
         "timestamp": `${moment().format()}`,
         "thumbnail": {
-            "url": `https://puu.sh/AWOvD.png`,
+            "url": "attachment://leave.png",
         },
         "author": {
             "name": `${member.displayName} left the ${member.guild} Server`,
@@ -43,6 +43,6 @@ module.exports = (bot, member, moment) => {
         ]
     };
 
-    member.guild.channels.find(c => c.name === "member-log").send({ embed });
+    member.guild.channels.find(c => c.name === "member-log").send({ embed, files: [{ attachment: './img/leave.png', name: 'leave.png' }] });
     bot.log(`${member.displayName} (${member.user.tag}) left the ${member.guild} Server`, "Leave");
 };
