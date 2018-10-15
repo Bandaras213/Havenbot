@@ -43,9 +43,9 @@ bot.commands.set('say', require('./commands/say.js'));
 bot.commands.set('lookup', require('./commands/lookup.js'));
 bot.commands.set('mute', require('./commands/mute.js'));
 bot.commands.set('updatedata', require('./commands/updatedata.js'));
-bot.commands.set('bully', require('./commands/bully.js'));
+bot.commands.set('antibully', require('./commands/antibully.js'));
 bot.commands.set('ship', require('./commands/ship.js'));
-bot.commands.set('test', ('./commands/test.js'));
+bot.commands.set('bully', require('./commands/bullyranger.js'));
 
 //Login with the Token
 bot.login(bot.token);
