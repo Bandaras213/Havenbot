@@ -78,7 +78,7 @@ module.exports = async (bot, message, args, Discord, moment) => {
 
     const canvas = Canvas.createCanvas(400, 400);
     const ctx = canvas.getContext('2d');
-    const { body: buffer } = await Canvas.loadImage('./img/antibully.jpeg');
+    const { body: buffer } = await Canvas.loadImage(`./img/antiantibully.png`);
     const bg = await Canvas.loadImage(buffer);
     ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
 
@@ -91,7 +91,7 @@ module.exports = async (bot, message, args, Discord, moment) => {
     ctx.strokeText(`${customText}`, 200, 375);
     ctx.fillText(`${customText}`, 200, 375);
 
-    const attachment = new Discord.Attachment(canvas.toBuffer(), `antibullyranger.png`);
+    const attachment = new Discord.Attachment(canvas.toBuffer(), "antibullyranger.png");
     setTimeout(function () {
         mes.delete();
         message.channel.send(`${user} summoned the Anti Bully Ranger`, (attachment));
