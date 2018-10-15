@@ -18,26 +18,25 @@ module.exports = async (bot, message, args, Discord, moment) => {
     let colorjson = "color.json";
     let lazytext = "Please use -Text -Color -Color"
   
-    let custom = `${args.join(" ").toUpperCase()}`;
+    let custom = args.join(" ").toUpperCase();
     const brgs = custom;
     const parts = brgs.split("-");
-    let part1 = parts[1];
-    let part2 = parts[2];
+    parts.shift();
+    let part1 = parts[0];
+    let part2 = parts[1];
     if (part1 === undefined){
        part1 = lazytext
     }else
-    {
-    }
     if (part2 === undefined){
     }else
     {
-        part2 = parts[2].replace(/ /g, "");
+        part2 = parts[1].replace(/ /g, "");
     } 
-    let part3 = parts[3];
+    let part3 = parts[2];
     if (part3 === undefined){
     }else
     {
-       part3 = parts[3].replace(/ /g, "");
+       part3 = parts[2].replace(/ /g, "");
     }
     let counter = 0;
     for (let i = 0; i < parts.length; i ++)
@@ -49,7 +48,7 @@ module.exports = async (bot, message, args, Discord, moment) => {
 	  case 0:
 	   return mes.edit(`${user} ${lazytext} for this command.`);
 	  case 1:
-	   return mes.edit(`${user} ${lazytext} for this command.`);
+	   customText = part1;
         break;
 	  case 2:
 	   customText = part1;
