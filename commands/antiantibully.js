@@ -15,7 +15,6 @@ module.exports = async (bot, message, args, Discord, moment) => {
 
     let user = message.member.user
     const mes = await message.channel.send(`Akari wants to bully some nerds.`);
-    let colorjson = "color.json";
     let lazytext = "Please use -Text -Color -Color"
 
     let custom = args.join(" ").toUpperCase();
@@ -65,28 +64,17 @@ module.exports = async (bot, message, args, Discord, moment) => {
 
     let color0
     if (part3 === undefined) {
-        color0 = "black";
+        color0 = "WHITE";
     } else {
         color0 = part3;
     };
 
     let color1
     if (part2 === undefined) {
-        color1 = "white";
+        color1 = "BLACK";
     } else {
         color1 = part2;
     };
-
-    console.log("The brgs String:", brgs);
-    console.log("How many Strings are in brgs:", counter);
-    console.warn("Start of the Parts variable");
-    console.log("Full parts string", parts);
-    console.log("Part 1 of parts:", part1);
-    console.log("Part 2 of parts:", part2);
-    console.log("Part 3 of parts:", part3);
-    console.log("Start of the color strings");
-    console.log("Color 1:", color0);
-    console.log("Color 2:", color1);
 
     const canvas = Canvas.createCanvas(400, 400);
     const ctx = canvas.getContext('2d');
@@ -103,9 +91,9 @@ module.exports = async (bot, message, args, Discord, moment) => {
     ctx.strokeText(`${customText}`, 200, 375);
     ctx.fillText(`${customText}`, 200, 375);
 
-    const attachment = new Discord.Attachment(canvas.toBuffer(), `antiantibullyranger.png`);
+    const attachment = new Discord.Attachment(canvas.toBuffer(), `antiantibullyranger.jpeg`);
     setTimeout(function () {
         mes.delete();
         message.channel.send(`${user} summoned the Anti Anti Bully Ranger`, (attachment));
     }, 3500);
-}
+};
