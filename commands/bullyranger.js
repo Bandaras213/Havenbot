@@ -18,7 +18,7 @@ module.exports = async (bot, message, args, Discord, moment) => {
     let colorjson = "color.json";
     let lazytext = "Please use -Text -Color -Color"
   
-    let custom = `${args.join(" ").toUpperCase()}`;
+    let custom = args.join(" ").toUpperCase();
     const brgs = custom;
     const parts = brgs.split("-");
     parts.shift();
