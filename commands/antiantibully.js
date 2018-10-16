@@ -2,16 +2,17 @@ const Canvas = require('canvas');
 const snekfetch = require("snekfetch");
 const fs = require("fs");
 
+module.exports = async (bot, message, args, Discord, moment) => {
+let fonterses = bot.config.fon
+
 const applyText = (canvas, text, fontsize, style) => {
     const ctx = canvas.getContext('2d');
 
     do {
-        ctx.font = `${style} ${fontsize -= 2}px bot.config.font`;
+        ctx.font = `${style} ${fontsize -= 2}px ${fonterses}`;
     } while (ctx.measureText(text).width > 380);
     return ctx.font;
 };
-
-module.exports = async (bot, message, args, Discord, moment) => {
 
     let user = message.member.user
     const mes = await message.channel.send(`Akari wants to bully some nerds.`);

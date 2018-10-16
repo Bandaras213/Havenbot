@@ -4,7 +4,7 @@ const fs = require("fs");
 
 module.exports = async (bot, message, args, Discord, moment) => {
 let fonterses = bot.config.font
-  console.log(bot.config.font)
+
 const applyText = (canvas, text, fontsize, style) => {
     const ctx = canvas.getContext('2d');
 
