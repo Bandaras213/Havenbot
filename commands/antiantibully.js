@@ -6,7 +6,7 @@ const applyText = (canvas, text, fontsize, style) => {
     const ctx = canvas.getContext('2d');
 
     do {
-        ctx.font = `${style} ${fontsize -= 2}px Courier New`;
+        ctx.font = `${style} ${fontsize -= 2}px bot.config.font`;
     } while (ctx.measureText(text).width > 380);
     return ctx.font;
 };

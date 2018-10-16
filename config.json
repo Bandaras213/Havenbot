@@ -2,5 +2,6 @@
     "token": "DISCORD_TOKEN",
     "ownerID": "DISCORD_ID",
     "prefix": "€",
-    "ffxivapikey": "API_KEY"
+    "ffxivapikey": "API_KEY",
+    "font": "Times New Roman"
 }
