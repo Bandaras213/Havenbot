@@ -1,4 +1,4 @@
-const snekfetch = require("snekfetch");
+const fetch = require("node-fetch");
 const ms = require("ms");
 
 module.exports = async (bot, message, args, Discord) => {
@@ -22,8 +22,10 @@ module.exports = async (bot, message, args, Discord) => {
     let lastname = args[1].charAt(0).toUpperCase() + args[1].substring(1);
 
     try {
-        await snekfetch.get("https://xivapi.com/character/search?name=" + args.join("%20") + "&server=Ragnarok" + `&key=${bot.config.xivapikey}`).then(async res => {
-            if (res.body.Pagination.ResultsTotal === 0) {
+        await fetch("https://xivapi.com/character/search?name=" + args.join("%20") + "&server=Ragnarok" + `&key=${bot.config.xivapikey}`)
+          .then(res => res.json())
+          .then(async res => {
+            if (res.Pagination.ResultsTotal === 0) {
                 return m.edit(`${user}, Invalid argument! **[Cannot find character "${args.join(" ")}"!]**`), message.react('❌'),
                     setTimeout(() => {
                         message.delete();
@@ -32,7 +34,7 @@ module.exports = async (bot, message, args, Discord) => {
             };
 
             var searchTerm = `${firstname} ${lastname}`;
-            var results = res.body.Results;
+            var results = res.Results;
             var lodeID = results.filter(function (results) {
                 return results.Name.indexOf(searchTerm) > -1;
             });
@@ -45,18 +47,20 @@ module.exports = async (bot, message, args, Discord) => {
                     }, ms("30s"));
             };
 
-            await snekfetch.get("https://xivapi.com/freecompany/9237023573225331624?data=FCM" + `&key=${bot.config.xivapikey}`).then(async sear => {
+            await fetch("https://xivapi.com/freecompany/9237023573225331624?data=FCM" + `&key=${bot.config.xivapikey}`)
+              .then(sear => sear.json())
+              .then(async sear => {
                 var RecRole = message.member.guild.roles.find(r => r.name === "Recruit");
                 var FetRole
 
-                if (!sear.body.Info.FreeCompany.State === 2) {
+                if (!sear.Info.FreeCompany.State === 2) {
                     FetRole = RecRole
                 };
-                if (!sear.body.Info.FreeCompanyMembers.State === 2) {
+                if (!sear.Info.FreeCompanyMembers.State === 2) {
                     FetRole = RecRole
                 };
 
-                let searPayload = sear.body.FreeCompanyMembers
+                let searPayload = sear.FreeCompanyMembers
                 let searPayloadFilter = searPayload.filter(ID => ID.ID == lodeID[0].ID);
                 if (searPayloadFilter[0]) {
                     FetRole = message.member.guild.roles.find(r => r.name === `${searPayloadFilter[0].Rank}`)

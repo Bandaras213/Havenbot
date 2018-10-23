@@ -46,6 +46,7 @@ bot.commands.set('updatedata', require('./commands/updatedata.js'));
 bot.commands.set('antibully', require('./commands/antibully.js'));
 bot.commands.set('ship', require('./commands/ship.js'));
 bot.commands.set('bully', require('./commands/antiantibully.js'));
+bot.commands.set('sad', require('./commands/sad.js'));
 
 //Login with the Token
 bot.login(bot.token);

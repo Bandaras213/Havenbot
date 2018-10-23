@@ -1,4 +1,4 @@
-const snekfetch = require("snekfetch");
+const fetch = require('node-fetch');
 const fs = require("fs");
 const Canvas = require('canvas');
 
@@ -25,14 +25,16 @@ module.exports = async (bot, message, args, Discord, moment) => {
     let firstname = args[0].charAt(0).toUpperCase() + args[0].substring(1);
     let lastname = args[1].charAt(0).toUpperCase() + args[1].substring(1);
 
+    
     try {
-        await snekfetch.get("https://xivapi.com/character/search?name=" + args.join("%20") + "&server=Ragnarok" + `&key=${bot.config.xivapikey}`).then(async res => {
-            if (res.body.Pagination.ResultsTotal === 0) {
+        await fetch("https://xivapi.com/character/search?name=" + args.join("%20") + "&server=Ragnarok" + `&key=${bot.config.xivapikey}`)
+            .then(res => res.json())
+            .then(async res => {
+            if (res.Pagination.ResultsTotal === 0) {
                 return m.edit(`${user}, Invalid argument! **[Cannot find character "${args.join(" ")}"!]**`), message.react('❌');
             };
-
             let searchTerm = `${firstname} ${lastname}`;
-            let results = res.body.Results;
+            let results = res.Results;
             let lodeID = results.filter(function (results) {
                 return results.Name.indexOf(searchTerm) > -1;
             });
@@ -41,8 +43,10 @@ module.exports = async (bot, message, args, Discord, moment) => {
                 return m.edit(`${user}, Invalid argument! **[Cannot find character "${args.join(" ")}"!]**`), message.react('❌');
             };
 
-            await snekfetch.get("https://xivapi.com/character/" + lodeID[0].ID + `?key=${bot.config.xivapikey}`).then(async sear => {
-                switch (sear.body.Info.Character.State) {
+            await fetch("https://xivapi.com/character/" + lodeID[0].ID + `?key=${bot.config.xivapikey}`)
+              .then(sear => sear.json())
+              .then(async sear => {
+                switch (sear.Info.Character.State) {
                     case 0:
                         return m.edit(`${user}, Character **"${args.join(" ")}"** is not in database and cannot be added? This shouldn't happen! Please message A'rata Kokonoe`), message.react('❌');
                     case 1:
@@ -54,40 +58,43 @@ module.exports = async (bot, message, args, Discord, moment) => {
                     case 5:
                         return m.edit(`${user}, The owner of character **"${args.join(" ")}"** has set their profile to Private. Please ask them to make their profile public!`), message.react('❌');
                 };
-              console.log(snekfetch)
 
-                let searCharacter = sear.body.Character;
+                let searCharacter = sear.Character;
+              
+                let s = searCharacter.Portrait;
+                let r = s.replace("https", "http");
 
                 let MinionFilter = JSON.parse(fs.readFileSync(Datafilter, 'utf8')).Minions.filter(ID => ID.ID == 0);
                 let MountFilter = JSON.parse(fs.readFileSync(Datafilter, 'utf8')).Mounts.filter(ID => ID.ID == 1);
                 let RaceFilter = JSON.parse(fs.readFileSync(Datafilter, 'utf8')).Races.filter(ID => ID.ID == searCharacter.Race - 1);
                 let TribesFilter = JSON.parse(fs.readFileSync(Datafilter, 'utf8')).Tribes.filter(ID => ID.ID == searCharacter.Tribe - 1);
-                let GCNameFilter = JSON.parse(fs.readFileSync(Datafilter, 'utf8')).GrandCompanys.filter(ID => ID.ID == searCharacter.GrandCompany.NameID - 1);
-                let GCRankFilter = GCNameFilter[0].Ranks.filter(RankID => RankID.RankID == searCharacter.GrandCompany.RankID - 1);
+                let GCNameFilter = JSON.parse(fs.readFileSync(Datafilter, 'utf8')).GrandCompanys.filter(ID => ID.ID == searCharacter.GrandCompany.NameID - 0);
+                let GCRankFilter = GCNameFilter[0].Ranks.filter(RankID => RankID.RankID == searCharacter.GrandCompany.RankID - 0);
                 let Jobs = JSON.parse(fs.readFileSync(Datafilter, 'utf8')).ClassJobs
-                console.log(GCNameFilter)
-                console.log(GCRankFilter)
+          
                 let titleID
-                if (searCharacter.Title == null) {
+                if (searCharacter.Title === "[NOT FOUND]") {
                     titleID = 0
                 } else {
                     titleID = searCharacter.Title;
                 };
 
-                await snekfetch.get(`https://xivapi.com/Title/` + `${titleID}` + `?key=${bot.config.xivapikey}`).then(async apititle => {
+                await fetch("https://xivapi.com/Title/" + `${titleID}` + `?key=${bot.config.xivapikey}`)
+                  .then(apititle => apititle.json())
+                  .then(async apititle => {
 
                     let title
                     if (searCharacter.Gender === 1) {
-                        title = apititle.body.Name
+                        title = apititle.Name
                     } else {
-                        title = apititle.body.NameFemale
+                        title = apititle.NameFemale
                     };
 
                     const canvas = Canvas.createCanvas(400, 300);
                     const ctx = canvas.getContext('2d');
 
-                    const { body: buffer } = await snekfetch.get(searCharacter.Portrait);
-                    const portrait = await Canvas.loadImage(buffer);
+                    //const {body: buffer} = await Canvas.loadImage(r);
+                    const portrait = await Canvas.loadImage(r);
                     ctx.drawImage(portrait, -33, 0, 220, canvas.height);
 
                     const background = await Canvas.loadImage('./img/JobLevelImage.png');

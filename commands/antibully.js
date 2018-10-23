@@ -1,5 +1,4 @@
 const Canvas = require('canvas');
-const snekfetch = require("snekfetch");
 const fs = require("fs");
 
 module.exports = async (bot, message, args, Discord, moment) => {
