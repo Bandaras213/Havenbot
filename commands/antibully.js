@@ -78,9 +78,8 @@ module.exports = async (bot, message, args, Discord, moment) => {
 
     const canvas = Canvas.createCanvas(400, 400);
     const ctx = canvas.getContext('2d');
-    const { body: buffer } = await Canvas.loadImage(`./img/antiantibully.png`);
-    const bg = await Canvas.loadImage(buffer);
-    ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
+    const buffer = await Canvas.loadImage(`./img/antibully.png`);
+    ctx.drawImage(buffer, 0, 0, canvas.width, canvas.height);
 
     ctx.font = applyText(canvas, `${customText}`, 60, "bold");
     ctx.strokeStyle = color0;

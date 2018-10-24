@@ -69,7 +69,7 @@ module.exports = async (bot, message, args, Discord, moment) => {
 
                 let Jobs = JSON.parse(fs.readFileSync(Datafilter, 'utf8')).ClassJobs
                 let titleID
-                if (searCharacter.Title == null) {
+                if (searCharacter.Title == null || searCharacter.Title == "[NOT FOUND]" || searCharacter.Title == undefined) {
                     titleID = 0
                 } else {
                     titleID = searCharacter.Title;
