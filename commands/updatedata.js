@@ -5,7 +5,7 @@ const fs = require("fs");
 let Datafilter = "data/data.json"
 module.exports = (bot, message, args, Discord, moment) => {
 
-    if (message.member.user.id == bot.config.ownerID) {
+    if (message.member.user.id == bot.ownerid) {
         fetch("https://xivapi.com/Companion" + `?key=${bot.config.xivapikey}`)
           .then(res => res.json())
           .then(async res => {
