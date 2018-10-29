@@ -1,13 +1,14 @@
 module.exports = async (bot, member, moment) => {
-    var VisRole = member.guild.roles.find(r => r.name === "Visitor");
-    let embedicon
 
+    //use the attachment as embedicon if the user has no avatar
+    let embedicon
     if (!member.user.avatarURL) {
         embedicon = "attachment://join.png";
     } else {
         embedicon = member.user.avatarURL;
     };
 
+    //define embed
     let embed = {
         "color": 65280,
         "timestamp": `${moment().format()}`,
@@ -45,7 +46,9 @@ module.exports = async (bot, member, moment) => {
         ]
     };
 
-    await member.addRole(VisRole);
+    //give them the visitor role and send the embed to #member-log
+    await member.addRole(member.guild.roles.find(r => r.name === "Visitor"));
     await member.guild.channels.find(c => c.name === "member-log").send({ embed, files: [{ attachment: './img/join.png', name: 'join.png' }] });
+
     bot.log(`${member.displayName} (${member.user.tag}) joined the ${member.guild} Server`, "Join");
 };

@@ -1,4 +1,6 @@
 module.exports = (bot, message, args, Discord, moment) => {
+
+    //define rich embed
     var embed = new Discord.RichEmbed()
         .setAuthor('About the Free Company "Haven"')
         .setTitle('Haven on the Lodestone', true)
@@ -9,6 +11,7 @@ module.exports = (bot, message, args, Discord, moment) => {
         .addField("Free Company Estate", "Plot 16, 13 Ward, Shirogane", true)
         .setColor(message.guild.roles.find(r => r.name === "Commander").hexColor)
         .setURL("https://eu.finalfantasyxiv.com/lodestone/freecompany/9237023573225331624/");
-    message.channel.send(embed);
-    message.react('✅');
+
+    //send embed
+    message.channel.send(embed), message.react('✅');
 };

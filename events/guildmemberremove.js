@@ -1,4 +1,6 @@
 module.exports = (bot, member, moment) => {
+
+    //use the attachment as embedicon if the user has no avatar
     let embedicon
     if (!member.user.avatarURL) {
         embedicon = "attachment://leave.png";
@@ -6,6 +8,7 @@ module.exports = (bot, member, moment) => {
         embedicon = member.user.avatarURL;
     };
 
+    //define embed
     let embed = {
         "color": 16711680,
         "timestamp": `${moment().format()}`,
@@ -43,6 +46,8 @@ module.exports = (bot, member, moment) => {
         ]
     };
 
+    //send embed to #member-log
     member.guild.channels.find(c => c.name === "member-log").send({ embed, files: [{ attachment: './img/leave.png', name: 'leave.png' }] });
+
     bot.log(`${member.displayName} (${member.user.tag}) left the ${member.guild} Server`, "Leave");
 };

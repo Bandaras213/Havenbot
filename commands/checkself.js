@@ -1,4 +1,6 @@
 module.exports = (bot, message, args, Discord, moment) => {
+
+    //define embed
     let embed = {
         "color": `${message.member.highestRole.color}`,
         "thumbnail": {
@@ -42,6 +44,7 @@ module.exports = (bot, message, args, Discord, moment) => {
         ]
     };
 
+    //delete original message and send embed
     message.delete();
     message.channel.send({ embed });
 };

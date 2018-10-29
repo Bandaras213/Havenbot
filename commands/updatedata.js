@@ -1,15 +1,19 @@
-//this is just here until I make it update itself once a month or so
-
 const snekfetch = require("snekfetch");
 const fs = require("fs");
 let Datafilter = "data/data.json"
+
 module.exports = (bot, message, args, Discord, moment) => {
+
+    //check for permission to execute command
     if (message.member.user.id == bot.config.ownerID) {
+
+        //get minion data
         snekfetch.get("https://xivapi.com/Companion" + `?key=${bot.config.xivapikey}`).then(async res => {
             let MinTotal = res.body.Pagination.ResultsTotal
-
             let MinionJ = JSON.parse(fs.readFileSync(Datafilter, 'utf8'));
             var MinionFilter = MinionJ.Minions.filter(ID => ID.ID == 0);
+
+            //check if the miniontotal is the same as in the json, if not update the json
             if (MinionFilter[0].MinionTotal === MinTotal) {
                 return;
             } else {
@@ -24,11 +28,13 @@ module.exports = (bot, message, args, Discord, moment) => {
             });
         });
 
+        //get mount data
         snekfetch.get("https://xivapi.com/Mount" + `?key=${bot.config.xivapikey}`).then(async res => {
             let MouTotal = res.body.Pagination.ResultsTotal
-
             let MountJ = JSON.parse(fs.readFileSync(Datafilter, 'utf8'));
             var MountFilter = MountJ.Mounts.filter(ID => ID.ID == 1);
+
+            //check if the mounttotal is the same as in the json, if not update the json
             if (MountFilter[0].MountTotal === MouTotal) {
                 return;
             } else {
@@ -43,7 +49,10 @@ module.exports = (bot, message, args, Discord, moment) => {
             });
         });
 
+        //delete message and confirm update
         message.delete(), message.channel.send("Mount and Minion Total should now be updated!");
+
+        //return if no permission
     } else {
         return message.delete(), message.reply(`You dont have permission to use this command!`);
     };

@@ -1,7 +1,6 @@
 const Canvas = require('canvas');
-const snekfetch = require("snekfetch");
-const fs = require("fs");
 
+//function to make sure text isnt bigger than the image
 const applyText = (canvas, text, fontsize, style) => {
     const ctx = canvas.getContext('2d');
 
@@ -20,7 +19,7 @@ module.exports = async (bot, message, args, Discord, moment) => {
     let custom = args.join(" ").toUpperCase();
     const brgs = custom;
     const parts = brgs.split("-");
-    parts.shift();
+    parts.shift(); //shift the brgs array to remove ""
     let part1 = parts[0];
     let part2 = parts[1];
 
@@ -91,7 +90,7 @@ module.exports = async (bot, message, args, Discord, moment) => {
     ctx.fillText(`${customText}`, 200, 375);
 
     const attachment = new Discord.Attachment(canvas.toBuffer(), "antiantibullyranger.jpeg");
-    setTimeout(function () {
+    setTimeout(() => {
         mes.delete();
         message.channel.send(`${user} summoned the Anti Anti Bully Ranger`, (attachment));
     }, 3500);

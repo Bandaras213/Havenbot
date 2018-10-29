@@ -1,5 +1,8 @@
 module.exports = (bot, message, args, Discord, moment) => {
+
+    //all possible answers as an array
     var eightball = [
+
         //Yes
         "Yes Hun.",
         "....Technically ya.",
@@ -31,11 +34,16 @@ module.exports = (bot, message, args, Discord, moment) => {
         "No I don’t see it in the past, present or future.",
     ];
 
+    //check if args is longer than one word
     if (!args[1]) return message.reply(`Missing argument! **[Question]**`), message.react('❌');
+
+    //create embed
     var embed = new Discord.RichEmbed()
         .addField(`❓${message.member.displayName} asked:`, `${args.slice(0).join(" ")}`, false)
         .addField(`❗The Answer is:`, `${eightball[Math.floor(Math.random() * eightball.length)]}`, false)
         .setColor(message.guild.roles.find(r => r.name === "Commander").hexColor);
+
+    //delete original message and send embed
     message.delete();
     message.channel.send({ embed });
 };

@@ -1,3 +1,5 @@
-module.exports = async (bot, error,) => {
+module.exports = async (bot, error, ) => {
+
+    //just log the error looooooooooool
     bot.log(error, "Error");
 };

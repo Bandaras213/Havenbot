@@ -1,4 +1,6 @@
 module.exports = (bot, message, args, Discord, moment) => {
+
+    //define rich embed
     var embed = new Discord.RichEmbed()
         .setAuthor('Havenbot Commands')
         .setThumbnail(`${bot.user.avatarURL}`, false)
@@ -14,6 +16,7 @@ module.exports = (bot, message, args, Discord, moment) => {
         .addField(".d6 / .d20", "Rolls a D6 / D20 for you", false)
         .setFooter("If there are any issues with the bot please @xTobiShotz#0142 on Discord.")
         .setColor(message.guild.roles.find(r => r.name === "Commander").hexColor);
-    message.channel.send(embed);
-    message.react('✅');
+
+        //send embed
+    message.channel.send(embed), message.react('✅');
 };
