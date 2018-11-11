@@ -7,6 +7,7 @@ moment.locale('en');
 var bot = new Discord.Client();
 bot.config = require('./config.json');
 bot.log = require('./functions/log.js');
+bot.caps = require('./functions/capitalize.js');
 
 //Ready & Activity Handler
 bot.on('ready', () => require('./events/ready.js')(bot));

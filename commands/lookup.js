@@ -25,8 +25,8 @@ module.exports = async (bot, message, args, Discord, moment) => {
     };
 
     //capitalize the fist letter of first and last name
-    let firstname = args[0].charAt(0).toUpperCase() + args[0].substring(1);
-    let lastname = args[1].charAt(0).toUpperCase() + args[1].substring(1);
+    let firstname = bot.caps(args[0]);
+    let lastname = bot.caps(args[1]);
 
     try {
 

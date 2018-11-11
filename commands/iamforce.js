@@ -17,8 +17,8 @@ module.exports = async (bot, message, args, Discord) => {
         };
 
         //capitalize the fist letter of first and last name
-        let firstname = args[1].charAt(0).toUpperCase() + args[1].substring(1);
-        let lastname = args[2].charAt(0).toUpperCase() + args[2].substring(1);
+        let firstname = bot.caps(args[1]);
+        let lastname = bot.caps(args[2]);
 
         let role
 
@@ -26,7 +26,7 @@ module.exports = async (bot, message, args, Discord) => {
         if (args[3]) {
 
             //capitalize the fist letter of role name
-            role = args[3].charAt(0).toUpperCase() + args[3].substring(1)
+            role = bot.caps(args[3]);
 
             //if the role cannot be found return
             if (!message.guild.roles.find(r => r.name === `${role}`)) {
