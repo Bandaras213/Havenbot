@@ -17,7 +17,7 @@ module.exports = async (bot, message, args, Discord, moment) => {
 
         //bulk delete fetched messages
         message.channel.bulkDelete(fetched)
-            .catch(error => bot.log(error, "Error"), message.reply(`**ERROR Couldn't delete messages because of:** ${error}`)); //log and reply if there is a error
+            .catch(error => { bot.log(error, "Error"), message.reply(`**ERROR Couldn't delete messages because of:** ${error}`) }); //log and reply if there is a error
 
         //extra log with who and how many messages got deleted in what channel
         bot.log(`${message.member.displayName} (${message.member.user.tag}) deleted ${deleteCount} messages in #${message.channel.name} on the ${message.member.guild} Server`, "Command");

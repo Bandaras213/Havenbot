@@ -3,10 +3,10 @@ const ms = require("ms");
 
 module.exports = async (bot, message, args, Discord) => {
 
+    let user = message.member.user
+
     //send message to confirm input
     const m = await message.channel.send(`${user}, Looking for Character **"${args.join(" ")}"** on Ragnarok... Give me a sec...`);
-
-    let user = message.member.user
 
     //check if the member has the visitor role, if not return
     if (!message.member.roles.some(r => ["Visitor",].includes(r.name))) {
