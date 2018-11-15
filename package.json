@@ -34,6 +34,7 @@
     "sodium": "^2.0.3",
     "tweetnacl": "^1.0.0",
     "ws": "^6.1.0",
-    "node-fetch": "^2.2.0"
+    "node-fetch": "^2.2.0",
+    "google": "^2.1.0"
   }
 }
