@@ -63,9 +63,10 @@ module.exports = async (bot, message, args, Discord) => {
 
                 //save the users discord and lodestone ids if there is no entry for those ids already
                 let findlodeid = CharDBobj.characters.find(lid => lid.lodeid == lodeID[0].ID);
+                let indexlodeid = CharDBobj.characters.findIndex(lid => lid.lodeid == lodeID[0].ID);
 
                 if (finddiscid == undefined && findlodeid) {
-                    return m.edit(`${user}, Are you sure that's you? **[Character claimed by another User!]**`), message.react('❌');
+                    return m.edit(`${user}, Are you sure that's you? **[Character already claimed by: <@${CharDBobj.characters[indexlodeid].discid}> (${CharDBobj.characters[indexlodeid].discid})]**`), message.react('❌');
                 };
 
                 if (finddiscid && findlodeid == undefined) {

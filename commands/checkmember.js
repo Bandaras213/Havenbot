@@ -1,7 +1,9 @@
 module.exports = (bot, message, args, Discord, moment) => {
-    
+
     //check if the member has the permission to use the command
     if (message.member.roles.some(r => ["Captain", "Commander",].includes(r.name))) {
+
+
         //check if args exist
         if (args[0]) {
 
@@ -9,15 +11,22 @@ module.exports = (bot, message, args, Discord, moment) => {
             let member = message.mentions.members.first();
             if (!member) return message.reply(`Missing argument! **[Mention]**`), message.react('❌');
 
+            let embedicon
+            if (!member.user.avatarURL) {
+                embedicon = "attachment://null.png";
+            } else {
+                embedicon = member.user.avatarURL;
+            };
+
             //defining embed
             let embed = {
                 "color": `${member.highestRole.color}`,
                 "thumbnail": {
-                    "url": `${member.user.avatarURL}`
+                    "url": `${embedicon}`
                 },
                 "author": {
                     "name": `Overview of User ${member.displayName}:`,
-                    "icon_url": `${member.user.avatarURL}`,
+                    "icon_url": `${embedicon}`,
                 },
                 "fields": [
                     {
@@ -27,7 +36,7 @@ module.exports = (bot, message, args, Discord, moment) => {
                     },
                     {
                         "name": "Avatar URL:",
-                        "value": `[Click Me](${member.user.displayAvatarURL})`,
+                        "value": `[Click Me](${embedicon})`,
                         "inline": true
                     },
                     {
@@ -55,7 +64,7 @@ module.exports = (bot, message, args, Discord, moment) => {
 
             //delete original message and send embed
             message.delete();
-            message.channel.send({ embed });
+            message.channel.send({ embed, files: [{ attachment: './img/null.png', name: 'null.png' }] });
 
             //return if no mention
         } else return message.reply(`Missing argument! **[Mention]**`), message.react('❌');

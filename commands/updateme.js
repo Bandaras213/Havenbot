@@ -17,7 +17,7 @@ module.exports = async (bot, message, args, Discord) => {
     if (finddiscid == -1) {
         return m.edit(`${user}, Looks like you haven't verified yourself! Please ask <@98605179544285184> to add you manually!`), message.react('❌');
     };
-    
+
     let lodeID = CharDBobj.characters[finddiscid].lodeid;
 
     try {
@@ -41,12 +41,16 @@ module.exports = async (bot, message, args, Discord) => {
 
                 //if theres a character with the ID in the fc use the rank name as the fetrole, if not use the recruit role
                 if (searPayloadFilter[0]) {
-                    FetRole = message.member.guild.roles.find(r => r.name === `${searPayloadFilter[0].Rank}`)
+                    FetRole = message.member.guild.roles.find(r => r.name === `${searPayloadFilter[0].Rank}`);
                 } else {
-                    FetRole = RecRole
+                    FetRole = RecRole;
                 };
 
-                //change the nickname of the user, remove the visitor role, give them the correct role, send the welcome embed to #main and delete the original messages
+                //change the nickname of the user, remove the old role if its not the same, give them the correct role, send the welcome embed to #main and delete the original messages
+                if (RecRole != FetRole) {
+                    await message.member.removeRole(RecRole);
+                };
+
                 await message.member.setNickname(`${searPayloadFilter[0].Name}`);
                 await message.member.addRole(FetRole);
                 await m.edit(`${user}, Successfully updated your Name and Role!`);
