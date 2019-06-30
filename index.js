@@ -43,6 +43,7 @@ bot.commands.set("test", require("./commands/test.js"));
 bot.commands.set("ship", require("./commands/ship.js"));
 bot.commands.set("antibully", require("./commands/antibully.js"));
 bot.commands.set("antiantibully", require("./commands/antiantibully.js"));
+bot.commands.set("serverchange", require("./commands/changeserver.js"));
 
 //Login with the Token
 bot.login(bot.config.token);
