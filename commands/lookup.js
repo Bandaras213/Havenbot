@@ -1,4 +1,5 @@
-const snekfetch = require("snekfetch");
+const fetch = require("node-fetch");
+const config = "data/botsettings.json";
 const fs = require("fs");
 const Canvas = require("canvas");
 
@@ -23,7 +24,12 @@ module.exports = async (bot, message, args, Discord, moment) => {
   let lastname = args[1].charAt(0).toUpperCase() + args[1].substring(1);
 
   try {
-    await snekfetch.get("https://xivapi.com/character/search?name=" + args.join("%20") + "&server=Ragnarok" + `&key=${bot.config.xivapikey}`).then(async res => {
+    await fetch("https://xivapi.com/character/search?name=" + args.join("%20") + "&server=Ragnarok" + `&key=${bot.config.xivapikey}`, {
+      method: "post"
+    })
+      .then(res => res.json())
+      .then(async res => {
+      console.log(JSON.stringify(res,null,2))
       if (res.body.Pagination.ResultsTotal === 0) {
         return m.edit(`${user}, Invalid argument! **[Cannot find character "${args.join(" ")}"!]**`), message.react("❌");
       }

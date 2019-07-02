@@ -1,6 +1,4 @@
 const Canvas = require("canvas");
-const snekfetch = require("snekfetch");
-const fs = require("fs");
 
 const applyText = (canvas, text, fontsize, style) => {
   const ctx = canvas.getContext("2d");

@@ -7,6 +7,10 @@ moment.locale("en");
 var bot = new Discord.Client();
 bot.config = require("./config.json");
 bot.log = require("./functions/log.js");
+let token;
+token = process.env.DISCORDTOKEN;
+bot.token = token;
+
 
 //Ready & Activity Handler
 bot.on("ready", () => require("./events/ready.js")(bot));
@@ -46,4 +50,4 @@ bot.commands.set("antiantibully", require("./commands/antiantibully.js"));
 bot.commands.set("serverchange", require("./commands/changeserver.js"));
 
 //Login with the Token
-bot.login(bot.config.token);
+bot.login(bot.token);
